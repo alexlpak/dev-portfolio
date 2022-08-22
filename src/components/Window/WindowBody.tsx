@@ -1,20 +1,19 @@
 import React from 'react';
-import WindowNavigation from './WindowNavigation';
 import styled from 'styled-components';
 
-const WindowBodyWrapper = styled.div`
+const WindowBodyStyled = styled.div`
     display: flex;
-    background-color: white;
-    color: black;
-    height: 10rem;
+    padding: 1rem;
+    gap: 1rem;
 `;
 
-const WindowBody: React.FC = () => {
+interface WindowBodyProps {
+    children?: React.ReactNode[] | React.ReactNode;
+};
+
+const WindowBody: React.FC<WindowBodyProps> = ({ children }) => {
     return (
-        <WindowBodyWrapper>
-            <WindowNavigation />
-            WindowBody
-        </WindowBodyWrapper>
+        <WindowBodyStyled>{children}</WindowBodyStyled>
     );
 };
 

@@ -1,40 +1,48 @@
-import { faFolder } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
+import Draggable from 'react-draggable';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const FileWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
     align-items: center;
     gap: .5rem;
 `;
 
 const FileIcon = styled(FontAwesomeIcon)`
     height: 2.5rem;
+    filter: drop-shadow(0rem .125rem .125rem rgb(0 0 0 / 25%));
     &:hover {
         cursor: pointer;
     };
 `;
 
-interface FileNameProps {
-    $selected?: boolean;
-};
-
-const FileName = styled.span<FileNameProps>`
+const FileName = styled.span`
     padding: .25rem;
-    background-color: ${({ $selected }) => $selected && 'rgba(255, 255, 255, 0.5)'};
 `;
 
-const File: React.FC = () => {
-    const [selected, setSelected] = useState(false);
+interface FileProps {
+    icon: IconProp,
+    filename: string;
+};
+
+const File: React.FC<FileProps> = ({ icon, filename }) => {
+    const fileRef = useRef(null);
 
     return (
-        <FileWrapper onClick={() => setSelected(prev => !prev)}>
-            <FileIcon icon={faFolder} />
-            <FileName $selected={selected}>File</FileName>
-        </FileWrapper>
+        <Draggable
+            nodeRef={fileRef}
+            bounds='body'
+        >
+            <FileWrapper ref={fileRef}>
+                <FileIcon icon={icon} />
+                <FileName>{filename}</FileName>
+            </FileWrapper>
+        </Draggable>
     );
 };
 

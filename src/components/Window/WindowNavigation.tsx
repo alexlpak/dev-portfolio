@@ -6,7 +6,6 @@ const WindowNavigationWrapper = styled.div`
     flex-direction: column;
     background-color: #3b3b3b;
     color: white;
-    height: 100%;
 `;
 
 const WindowNavigation: React.FC = () => {

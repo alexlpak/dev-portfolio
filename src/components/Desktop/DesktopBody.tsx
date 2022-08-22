@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import File from '../File/File';
 import Window from '../Window/Window';
 
 const DesktopBodyWrapper = styled.div`
@@ -29,9 +28,8 @@ const DesktopBodyWrapper = styled.div`
 
 const DesktopBody: React.FC = () => {
     return (
-        <DesktopBodyWrapper>
+        <DesktopBodyWrapper className='desktop'>
             <Window />
-            <File />
         </DesktopBodyWrapper>
     );
 };

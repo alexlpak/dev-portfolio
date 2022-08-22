@@ -10,7 +10,6 @@ const GlobalStyle = createGlobalStyle`
 
     * {
         box-sizing: border-box;
-        /* outline: 1px solid orange; */
     };
 
     body {
@@ -20,6 +19,9 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         overflow: hidden;
         user-select: none;
+        /* & * {
+            outline: 1px solid orange;
+        }; */
     };
 `;
 
