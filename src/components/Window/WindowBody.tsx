@@ -5,6 +5,7 @@ const WindowBodyStyled = styled.div`
     display: flex;
     padding: 1rem;
     gap: 1rem;
+    width: 100%;
 `;
 
 interface WindowBodyProps {
@@ -13,7 +14,7 @@ interface WindowBodyProps {
 
 const WindowBody: React.FC<WindowBodyProps> = ({ children }) => {
     return (
-        <WindowBodyStyled>{children}</WindowBodyStyled>
+        <WindowBodyStyled className='window-body'>{children}</WindowBodyStyled>
     );
 };
 

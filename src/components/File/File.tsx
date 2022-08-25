@@ -1,16 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import Draggable from 'react-draggable';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const FileWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    position: relative;
     align-items: center;
+    justify-content: center;
     gap: .5rem;
+    flex-grow: 0;
+    flex-shrink: 0;
 `;
 
 const FileIcon = styled(FontAwesomeIcon)`
@@ -28,21 +28,18 @@ const FileName = styled.span`
 interface FileProps {
     icon: IconProp,
     filename: string;
+    color?: string;
+    onClick?: () => void;
 };
 
-const File: React.FC<FileProps> = ({ icon, filename }) => {
+const File: React.FC<FileProps> = ({ icon, filename, color, onClick }) => {
     const fileRef = useRef(null);
 
     return (
-        <Draggable
-            nodeRef={fileRef}
-            bounds='body'
-        >
-            <FileWrapper ref={fileRef}>
-                <FileIcon icon={icon} />
-                <FileName>{filename}</FileName>
-            </FileWrapper>
-        </Draggable>
+        <FileWrapper ref={fileRef} onClick={onClick}>
+            <FileIcon icon={icon} color={color} />
+            <FileName>{filename}</FileName>
+        </FileWrapper>
     );
 };
 
