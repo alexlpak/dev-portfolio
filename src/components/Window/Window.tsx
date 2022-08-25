@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Draggable from 'react-draggable';
 import WindowLocation from './WindowLocation';
 import { Directory, useFileSystemContext } from '../../contexts/FileSystemContext';
+import { useWindowGlobalContext } from '../../contexts/WindowGlobalContext';
 
 const WindowWrapper = styled.div`
     display: flex;
@@ -32,13 +33,22 @@ export const useWindowContext = () => {
 const Window: React.FC = () => {
     const windowRef = useRef(null);
     const { files } = useFileSystemContext();
+    const { windowZIndex, setWindowZIndex, lastClickedWindow, setLastClickedWindow } = useWindowGlobalContext();
 
     const [currentDirectory, setCurrentDirectory] = useState(files[0] as Directory);
     const [rootDirectory, setRootDirectory] = useState(files[0] as Directory);
+    const [localZIndex, setLocalZIndex] = useState(windowZIndex);
 
     const value = {
         currentDirectory, setCurrentDirectory,
         rootDirectory, setRootDirectory
+    };
+
+    const setWindowTop = () => {
+        if (lastClickedWindow === windowRef) return;
+        setLastClickedWindow(() => windowRef);
+        setWindowZIndex(index => index + 1);
+        setLocalZIndex(() => windowZIndex + 1);
     };
 
     return (
@@ -47,8 +57,13 @@ const Window: React.FC = () => {
                 handle='.handle'
                 nodeRef={windowRef}
                 bounds='body'
+                onStart={setWindowTop}
             >
-                <WindowWrapper ref={windowRef}>
+                <WindowWrapper
+                    style={{ zIndex: localZIndex }}
+                    ref={windowRef}
+                    onClick={setWindowTop}
+                >
                     <WindowMenuBar className='handle' />
                     <WindowLocation />
                     <WindowContents />

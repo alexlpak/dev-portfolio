@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useWindowContext } from './Window';
 
 const WindowMenuBarWrapper = styled.div`
     display: grid;
@@ -43,6 +44,8 @@ const WindowLabel = styled.span`
 `;
 
 const WindowMenuBar: React.FC<WindowMenuBarProps> = ({ className }) => {
+    const { currentDirectory } = useWindowContext();
+
     return (
         <WindowMenuBarWrapper className={className}>
             <MenuBarButtonsWrapper>
@@ -50,7 +53,7 @@ const WindowMenuBar: React.FC<WindowMenuBarProps> = ({ className }) => {
                 <MenuBarButton $color='orange' />
                 <MenuBarButton $color='green' />
             </MenuBarButtonsWrapper>
-            <WindowLabel>WindowMenuBar</WindowLabel>
+            <WindowLabel>{currentDirectory.directory}</WindowLabel>
         </WindowMenuBarWrapper>
     );
 };

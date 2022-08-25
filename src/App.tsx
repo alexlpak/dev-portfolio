@@ -4,6 +4,7 @@ import ResetStyle from './styles/ResetStyle.styled';
 import { theme } from './styles/theme';
 import Desktop from './components/Desktop/Desktop';
 import { FileSystemContextProvider } from './contexts/FileSystemContext';
+import { WindowGlobalContextProvider } from './contexts/WindowGlobalContext';
 
 const App = () => {
     return (
@@ -11,9 +12,11 @@ const App = () => {
             <ResetStyle />
             <GlobalStyle />
             <ThemeProvider theme={theme}>
-                <FileSystemContextProvider>
-                    <Desktop />
-                </FileSystemContextProvider>
+                <WindowGlobalContextProvider>
+                    <FileSystemContextProvider>
+                        <Desktop />
+                    </FileSystemContextProvider>
+                </WindowGlobalContextProvider>
             </ThemeProvider>
         </>
     );

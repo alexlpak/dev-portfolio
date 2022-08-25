@@ -118,11 +118,11 @@ export const useFileSystemContext = () => {
     return useContext(FileSystemContext);
 };
 
-interface FormContextProviderProps {
+interface FileSystemContextProviderProps {
     children: React.ReactNode | React.ReactNode[];
 };
 
-export const FileSystemContextProvider: React.FC<FormContextProviderProps> = ({ children }) => {
+export const FileSystemContextProvider: React.FC<FileSystemContextProviderProps> = ({ children }) => {
     const [files, setFiles] = useState(data);
 
     const addParentToObject = (directory: Directory) => {

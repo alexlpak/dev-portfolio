@@ -30,6 +30,8 @@ const DesktopBody: React.FC = () => {
     return (
         <DesktopBodyWrapper className='desktop'>
             <Window />
+            <Window />
+            <Window />
         </DesktopBodyWrapper>
     );
 };
