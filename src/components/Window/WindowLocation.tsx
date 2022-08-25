@@ -43,7 +43,7 @@ const BackButton = styled.button.attrs({
 `;
 
 const WindowLocation: React.FC = () => {
-    const { currentDirectory, setCurrentDirectory } = useWindowContext();
+    const { currentDirectory, rootDirectory, setCurrentDirectory } = useWindowContext();
     const [path, setPath] = useState([] as string[]);
 
     const getWindowPath = (directory: Directory) => {
@@ -72,7 +72,7 @@ const WindowLocation: React.FC = () => {
             >
                 <FontAwesomeIcon icon={faCaretLeft} />
             </BackButton>
-            <WindowPath value={path.reverse().join('/')} />
+            <WindowPath value={path[0] === rootDirectory.directory ? path.join('/') : path.reverse().join('/')} />
         </WindowLocationWrapper>
     );
 };
