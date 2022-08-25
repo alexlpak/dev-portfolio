@@ -1,10 +1,8 @@
-import React, { useContext, useState, createContext } from 'react';
+import React, { useContext, createContext, useRef } from 'react';
 
 interface WindowGlobalContextType {
-    windowZIndex: number;
-    setWindowZIndex: React.Dispatch<React.SetStateAction<number>>;
-    lastClickedWindow: React.MutableRefObject<null>;
-    setLastClickedWindow: React.Dispatch<React.SetStateAction<React.MutableRefObject<null>>>;
+    windowZIndex: React.MutableRefObject<number>;
+    lastClickedWindow: React.MutableRefObject<React.MutableRefObject<null>>;
 };
 
 const WindowGlobalContext = createContext({} as WindowGlobalContextType);
@@ -18,12 +16,12 @@ interface WindowGlobalContextProviderProps {
 };
 
 export const WindowGlobalContextProvider: React.FC<WindowGlobalContextProviderProps> = ({ children }) => {
-    const [windowZIndex, setWindowZIndex] = useState(999);
-    const [lastClickedWindow, setLastClickedWindow] = useState({} as React.MutableRefObject<null>)
+    const windowZIndex = useRef(999);
+    const lastClickedWindow = useRef({} as React.MutableRefObject<null>)
 
     const value = {
-        windowZIndex, setWindowZIndex,
-        lastClickedWindow, setLastClickedWindow
+        windowZIndex,
+        lastClickedWindow
     };
 
     return (

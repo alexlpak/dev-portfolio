@@ -33,11 +33,11 @@ export const useWindowContext = () => {
 const Window: React.FC = () => {
     const windowRef = useRef(null);
     const { files } = useFileSystemContext();
-    const { windowZIndex, setWindowZIndex, lastClickedWindow, setLastClickedWindow } = useWindowGlobalContext();
+    const { windowZIndex, lastClickedWindow } = useWindowGlobalContext();
 
     const [currentDirectory, setCurrentDirectory] = useState(files[0] as Directory);
     const [rootDirectory, setRootDirectory] = useState(files[0] as Directory);
-    const [localZIndex, setLocalZIndex] = useState(windowZIndex);
+    const [localZIndex, setLocalZIndex] = useState(windowZIndex.current);
 
     const value = {
         currentDirectory, setCurrentDirectory,
@@ -45,10 +45,14 @@ const Window: React.FC = () => {
     };
 
     const setWindowTop = () => {
-        if (lastClickedWindow === windowRef) return;
-        setLastClickedWindow(() => windowRef);
-        setWindowZIndex(index => index + 1);
-        setLocalZIndex(() => windowZIndex + 1);
+        if (!lastClickedWindow.current || !windowRef.current) return;
+        if (lastClickedWindow.current === windowRef.current) return;
+        lastClickedWindow.current = windowRef;
+        windowZIndex.current += 1;
+        setLocalZIndex(() => {
+            if (windowZIndex.current) return windowZIndex.current + 1;
+            else return localZIndex;
+        });
     };
 
     return (
