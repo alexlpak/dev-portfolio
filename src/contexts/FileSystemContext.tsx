@@ -140,6 +140,7 @@ export const FileSystemContextProvider: React.FC<FormContextProviderProps> = ({ 
 
     useEffect(() => {
         addParentToFiles(files);
+        // eslint-disable-next-line
     }, [files]);
 
     const value = {

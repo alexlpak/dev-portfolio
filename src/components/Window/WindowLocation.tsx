@@ -61,6 +61,7 @@ const WindowLocation: React.FC = () => {
     useEffect(() => {
         setPath(() => []);
         getWindowPath(currentDirectory);
+        // eslint-disable-next-line
     }, [currentDirectory]);
 
     return (
