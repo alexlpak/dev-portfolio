@@ -43,7 +43,7 @@ const BackButton = styled.button.attrs({
 `;
 
 const WindowLocation: React.FC = () => {
-    const { currentDirectory, rootDirectory, setCurrentDirectory } = useWindowContext();
+    const { currentDirectory, rootDirectory, setCurrentDirectory, setRootDirectory } = useWindowContext();
     const [path, setPath] = useState([] as string[]);
 
     const getWindowPath = (directory: Directory) => {
@@ -51,7 +51,8 @@ const WindowLocation: React.FC = () => {
         if (directory.parent) {
             setPath((path) => directory.parent ? [...path, directory.parent.directory] : path);
             getWindowPath(directory.parent);
-        };
+        }
+        else setRootDirectory(directory);
     };
 
     const navigateToParent = (directory: Directory) => {
@@ -63,6 +64,10 @@ const WindowLocation: React.FC = () => {
         getWindowPath(currentDirectory);
         // eslint-disable-next-line
     }, [currentDirectory]);
+
+    useEffect(() => {
+        console.log(path, rootDirectory.directory);
+    }, [path, rootDirectory]);
 
     return (
         <WindowLocationWrapper>
