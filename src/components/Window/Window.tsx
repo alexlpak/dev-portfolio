@@ -4,7 +4,7 @@ import WindowContents from './WindowContents';
 import styled from 'styled-components';
 import Draggable from 'react-draggable';
 import WindowLocation from './WindowLocation';
-import { Directory, useFileSystemContext } from '../../contexts/FileSystemContext';
+import { Directory } from '../../contexts/FileSystemContext';
 import { useWindowGlobalContext } from '../../contexts/WindowGlobalContext';
 
 const WindowWrapper = styled.div`
@@ -22,6 +22,7 @@ interface WindowContextType {
     setCurrentDirectory: React.Dispatch<React.SetStateAction<Directory>>;
     rootDirectory: Directory;
     setRootDirectory: React.Dispatch<React.SetStateAction<Directory>>;
+    windowRef: React.RefObject<HTMLDivElement>;
 };
 
 const WindowContext = createContext<WindowContextType>({} as WindowContextType);
@@ -30,18 +31,24 @@ export const useWindowContext = () => {
     return useContext(WindowContext);
 };
 
-const Window: React.FC = () => {
+interface WindowProps {
+    initDirectory: Directory;
+    id: string;
+};
+
+const Window: React.FC<WindowProps> = ({ initDirectory, id }) => {
     const windowRef = useRef(null);
-    const { files } = useFileSystemContext();
+    const windowId = id;
+
     const { windowZIndex, lastClickedWindow } = useWindowGlobalContext();
 
-    const [currentDirectory, setCurrentDirectory] = useState(files[0] as Directory);
-    const [rootDirectory, setRootDirectory] = useState(files[0] as Directory);
+    const [currentDirectory, setCurrentDirectory] = useState(initDirectory as Directory);
+    const [rootDirectory, setRootDirectory] = useState(initDirectory as Directory);
     const [localZIndex, setLocalZIndex] = useState(windowZIndex.current);
 
     const value = {
         currentDirectory, setCurrentDirectory,
-        rootDirectory, setRootDirectory
+        rootDirectory, setRootDirectory, windowRef, windowId
     };
 
     const setWindowTop = () => {
@@ -67,6 +74,7 @@ const Window: React.FC = () => {
                     style={{ zIndex: localZIndex }}
                     ref={windowRef}
                     onClick={setWindowTop}
+                    id={windowId}
                 >
                     <WindowMenuBar className='handle' />
                     <WindowLocation />

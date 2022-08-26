@@ -1,12 +1,16 @@
+import { faFolder } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import styled from 'styled-components';
+import File from '../File/File';
+import DesktopFileGrid from './DesktopFileGrid';
+import { useWindowGlobalContext } from '../../contexts/WindowGlobalContext';
+import { Directory, useFileSystemContext } from '../../contexts/FileSystemContext';
 import Window from '../Window/Window';
+import uniqid from 'uniqid';
 
 const DesktopBodyWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     color: white;
     height: 100%;
     width: 100%;
@@ -27,11 +31,46 @@ const DesktopBodyWrapper = styled.div`
 `;
 
 const DesktopBody: React.FC = () => {
+    const { files } = useFileSystemContext();
+    const { windows, setWindows } = useWindowGlobalContext();
+
     return (
         <DesktopBodyWrapper className='desktop'>
-            <Window />
-            <Window />
-            <Window />
+            <DesktopFileGrid>
+                {files.filter(file => file.directory === 'Desktop').map(rootDirectory => {
+                    const addNewWindow = (directory: Directory) => {
+                        setWindows(windows => {
+                            return [...windows, { id: uniqid(), initDirectory: directory }];
+                        });
+                    };
+                    const folders = rootDirectory.folders.map((directory, index) => {
+                        return (
+                            <File
+                                key={`${directory.directory}-${index}`}
+                                filename={directory.directory}
+                                icon={faFolder}
+                                onDoubleClick={() => addNewWindow(directory)}
+                            />
+                        );
+                    });
+                    const files = rootDirectory.files.map((file, index) => {
+                        return (
+                            <File
+                                key={`${file.filename}-${index}`}
+                                filename={file.filename}
+                                icon={file.icon}
+                                onDoubleClick={file.onOpen}
+                            />
+                        );
+                    });
+                    return [...folders, ...files];
+                })}
+                {windows.map(window => {
+                    return (
+                        <Window key={window.id} initDirectory={window.initDirectory} id={window.id} />
+                    );
+                })}
+            </DesktopFileGrid>
         </DesktopBodyWrapper>
     );
 };

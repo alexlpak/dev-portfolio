@@ -27,7 +27,7 @@ const WindowContents: React.FC = () => {
                             key={folder.directory}
                             filename={folder.directory}
                             icon={faFolder}
-                            onClick={() => setCurrentDirectory(folder)}
+                            onDoubleClick={() => setCurrentDirectory(folder)}
                         />
                     )
                 })}
@@ -38,7 +38,7 @@ const WindowContents: React.FC = () => {
                             key={file.filename}
                             filename={file.filename}
                             icon={file.icon}
-                            onClick={file.onOpen}
+                            onDoubleClick={file.onOpen}
                         />
                     )
                 })}

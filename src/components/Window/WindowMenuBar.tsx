@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useWindowGlobalContext } from '../../contexts/WindowGlobalContext';
 import { useWindowContext } from './Window';
 
 const WindowMenuBarWrapper = styled.div`
@@ -44,12 +45,22 @@ const WindowLabel = styled.span`
 `;
 
 const WindowMenuBar: React.FC<WindowMenuBarProps> = ({ className }) => {
-    const { currentDirectory } = useWindowContext();
+    const { currentDirectory, windowRef } = useWindowContext();
+    const { setWindows } = useWindowGlobalContext();
+
+    const closeWindow = () => {
+        setWindows(windows => windows.filter(window => {
+            if (windowRef.current) {
+                return window.id !== windowRef.current.id;
+            }
+            else return false;
+        }));
+    };
 
     return (
         <WindowMenuBarWrapper className={className}>
             <MenuBarButtonsWrapper>
-                <MenuBarButton $color='red' />
+                <MenuBarButton $color='red' onClick={() => closeWindow()} />
                 <MenuBarButton $color='orange' />
                 <MenuBarButton $color='green' />
             </MenuBarButtonsWrapper>
