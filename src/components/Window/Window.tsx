@@ -23,6 +23,7 @@ interface WindowContextType {
     rootDirectory: Directory;
     setRootDirectory: React.Dispatch<React.SetStateAction<Directory>>;
     windowRef: React.RefObject<HTMLDivElement>;
+    windowId: string;
 };
 
 const WindowContext = createContext<WindowContextType>({} as WindowContextType);
@@ -43,7 +44,7 @@ const Window: React.FC<WindowProps> = ({ initDirectory, id }) => {
     const { windowZIndex, lastClickedWindow } = useWindowGlobalContext();
 
     const [currentDirectory, setCurrentDirectory] = useState(initDirectory as Directory);
-    const [rootDirectory, setRootDirectory] = useState(initDirectory as Directory);
+    const [rootDirectory, setRootDirectory] = useState({} as Directory);
     const [localZIndex, setLocalZIndex] = useState(windowZIndex.current);
 
     const value = {

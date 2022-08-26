@@ -21,6 +21,7 @@ interface WindowGlobalContextProviderProps {
 interface WindowInitProps {
     initDirectory: Directory;
     id: string;
+    currentDirectory?: Directory;
 };
 
 export const WindowGlobalContextProvider: React.FC<WindowGlobalContextProviderProps> = ({ children }) => {

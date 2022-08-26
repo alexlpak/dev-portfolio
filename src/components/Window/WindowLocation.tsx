@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Directory } from '../../contexts/FileSystemContext';
+import { useWindowGlobalContext } from '../../contexts/WindowGlobalContext';
 import { useWindowContext } from './Window';
 
 const WindowLocationWrapper = styled.div`
@@ -43,7 +44,9 @@ const BackButton = styled.button.attrs({
 `;
 
 const WindowLocation: React.FC = () => {
-    const { currentDirectory, rootDirectory, setCurrentDirectory, setRootDirectory } = useWindowContext();
+    const { currentDirectory, rootDirectory, setCurrentDirectory, setRootDirectory, windowId } = useWindowContext();
+    const { windows } = useWindowGlobalContext();
+
     const [path, setPath] = useState([] as string[]);
 
     const getWindowPath = (directory: Directory) => {
@@ -62,12 +65,10 @@ const WindowLocation: React.FC = () => {
     useEffect(() => {
         setPath(() => []);
         getWindowPath(currentDirectory);
+        const currentWindow = windows.find(window => window.id === windowId);
+        if (currentWindow) currentWindow.currentDirectory = currentDirectory;
         // eslint-disable-next-line
     }, [currentDirectory]);
-
-    useEffect(() => {
-        console.log(path, rootDirectory.directory);
-    }, [path, rootDirectory]);
 
     return (
         <WindowLocationWrapper>

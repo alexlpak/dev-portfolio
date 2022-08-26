@@ -39,8 +39,10 @@ const DesktopBody: React.FC = () => {
             <DesktopFileGrid>
                 {files.filter(file => file.directory === 'Desktop').map(rootDirectory => {
                     const addNewWindow = (directory: Directory) => {
+                        const windowAlreadyExists = windows.find(window => window.currentDirectory === directory);
                         setWindows(windows => {
-                            return [...windows, { id: uniqid(), initDirectory: directory }];
+                            if (!windowAlreadyExists) return [...windows, { id: uniqid(), initDirectory: directory }];
+                            else return windows;
                         });
                     };
                     const folders = rootDirectory.folders.map((directory, index) => {
