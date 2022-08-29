@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const WindowBodyStyled = styled.div`
     display: flex;
+    position: relative;
     padding: 1rem;
     gap: 1rem;
     width: 100%;

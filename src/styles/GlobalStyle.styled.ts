@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         font-family: 'Ubuntu', sans-serif;
+        position: relative;
         height: 100%;
         width: 100%;
         margin: 0;

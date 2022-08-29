@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const DesktopFileGridWrapper = styled.div`
-    padding: 1rem;
     display: grid;
     grid-template-columns: max-content;
     gap: 1rem;
