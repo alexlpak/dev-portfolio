@@ -15,6 +15,7 @@ const WindowWrapper = styled.div`
     border: none;
     overflow: hidden;
     box-shadow: 0rem .125rem .125rem rgb(0 0 0 / 25%);
+    resize: both;
 `;
 
 interface WindowContextType {

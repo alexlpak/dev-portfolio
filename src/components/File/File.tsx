@@ -14,12 +14,13 @@ const FileWrapper = styled.div<FileWrapperProps>`
     align-items: center;
     justify-content: center;
     gap: .5rem;
-    flex-grow: 0;
-    flex-shrink: 0;
     padding: .5rem;
     background-color: ${({ $selected }) => $selected && 'rgba(0, 0, 0, 0.25)'};
     border: none;
     border-radius: .25rem;
+    align-self: flex-start;
+    justify-self: flex-start;
+    min-width: 5rem;
     &:hover {
         cursor: pointer;
     };
