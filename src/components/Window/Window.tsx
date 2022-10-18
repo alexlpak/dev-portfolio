@@ -1,4 +1,4 @@
-import React, { useRef, useState, createContext, useContext } from 'react';
+import React, { useRef, useState, createContext, useContext, useEffect } from 'react';
 import WindowMenuBar from './WindowMenuBar';
 import WindowContents from './WindowContents';
 import styled from 'styled-components';
@@ -16,6 +16,8 @@ const WindowWrapper = styled.div`
     overflow: hidden;
     box-shadow: 0rem .125rem .125rem rgb(0 0 0 / 25%);
     resize: both;
+    min-width: 40rem;
+    min-height: 20rem;
 `;
 
 interface WindowContextType {
@@ -73,7 +75,9 @@ const Window: React.FC<WindowProps> = ({ initDirectory, id }) => {
                 onStart={setWindowTop}
             >
                 <WindowWrapper
-                    style={{ zIndex: localZIndex }}
+                    style={{
+                        zIndex: localZIndex
+                    }}
                     ref={windowRef}
                     onClick={setWindowTop}
                     id={windowId}

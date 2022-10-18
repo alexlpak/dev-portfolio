@@ -11,12 +11,13 @@ import uniqid from 'uniqid';
 const DesktopBodyWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     position: relative;
     color: white;
     height: 100%;
     width: 100%;
-    background-size: 300% 300%;
     padding: 1rem;
+    background-size: 300% 300%;
     background-image: linear-gradient(
             -45deg, 
             rgba(59,173,227,1) 0%, 

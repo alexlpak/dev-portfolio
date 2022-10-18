@@ -1,11 +1,18 @@
 import React, { useContext, useState, createContext, useEffect } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCalculator, faGamepad, faHeart, faMobile, faNoteSticky, faStar } from '@fortawesome/free-solid-svg-icons';
 
 export interface File {
     filename: string;
     icon: IconProp;
     onOpen: () => void;
+    preview?: Preview;
+};
+
+interface Preview {
+    thumbnailSrc: string;
+    description: string;
+    tags?: string[];
 };
 
 export interface Directory {
@@ -22,87 +29,68 @@ export type Directories = Directory[];
 const data: Directories = [
     {
         directory: 'Desktop',
-        files: [
-            {
-                filename: 'test',
-                icon: faStar,
-                onOpen: () => alert(`I'm a file!`)
-            },
-            {
-                filename: 'test2',
-                icon: faStar,
-                onOpen: () => alert(`I'm a different file!`)
-            }
-        ],
+        files: [],
         folders: [
             {
-                directory: 'pizza',
+                directory: 'Projects',
                 files: [],
                 folders: [
                     {
-                        directory: 'curry',
-                        files: [],
+                        directory: 'Client Work',
+                        files: [
+                            {
+                                filename: `Shatter'd Cell Solutions`,
+                                icon: faMobile,
+                                onOpen: () => alert(`I'm a file!`)
+                            },
+                            {
+                                filename: `Terry Wedding`,
+                                icon: faHeart,
+                                onOpen: () => alert(`I'm a file!`)
+                            },
+                        ],
+                        folders: []
+                    },
+                    {
+                        directory: 'Personal',
+                        files: [
+                            {
+                                filename: `Pak Wedding`,
+                                icon: faHeart,
+                                onOpen: () => alert(`I'm a file!`)
+                            },
+                        ],
+                        folders: []
+                    },
+                    {
+                        directory: 'Tools',
+                        files: [
+                            {
+                                filename: `Code Editor`,
+                                icon: faNoteSticky,
+                                onOpen: () => alert('Well howdy!')
+                            },
+                            {
+                                filename: `Calculator`,
+                                icon: faCalculator,
+                                onOpen: () => alert('beep beep boop')
+                            }
+                        ],
+                        folders: []
+                    },
+                    {
+                        directory: 'Games',
+                        files: [
+                            {
+                                filename: `Flappy Bird`,
+                                icon: faGamepad,
+                                onOpen: () => alert('flap flap crash')
+                            }
+                        ],
                         folders: []
                     }
                 ]
             },
-            {
-                directory: 'images',
-                files: [
-                    {
-                        filename: 'hello',
-                        icon: faStar,
-                        onOpen: () => {}
-                    },
-                    {
-                        filename: 'random',
-                        icon: faStar,
-                        onOpen: () => {}
-                    }
-                ],
-                folders: [
-                    {
-                        directory: 'other',
-                        files: [
-                            {
-                                filename: 'file-yo',
-                                icon: faStar,
-                                onOpen: () => {}
-                            }
-                        ],
-                        folders: [
-                            {
-                                directory: 'further down',
-                                files: [],
-                                folders: []
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        directory: 'Documents',
-        files: [
-            {
-                filename: 'test',
-                icon: faStar,
-                onOpen: () => {}
-            }
-        ],
-        folders: [
-            {
-                directory: 'word',
-                files: [
-                    {
-                        filename: 'test',
-                        icon: faStar,
-                        onOpen: () => {}
-                    }
-                ],
-                folders: []
-            }
         ]
     },
 ];

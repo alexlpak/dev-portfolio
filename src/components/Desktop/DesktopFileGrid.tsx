@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const DesktopFileGridWrapper = styled.div`
-    display: grid;
-    grid-template-columns: max-content;
+    display: flex;
     gap: 1rem;
+    height: 100%;
+    width: 100%;
 `;
 
 interface DesktopFileGridProps {

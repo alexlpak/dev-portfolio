@@ -8,6 +8,7 @@ const WindowBodyStyled = styled.div`
     gap: 1rem;
     width: 100%;
     overflow: auto;
+    flex-wrap: wrap;
 `;
 
 interface WindowBodyProps {

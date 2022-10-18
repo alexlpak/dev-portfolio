@@ -20,7 +20,7 @@ const FileWrapper = styled.div<FileWrapperProps>`
     border-radius: .25rem;
     align-self: flex-start;
     justify-self: flex-start;
-    min-width: 5rem;
+    width: 5rem;
     &:hover {
         cursor: pointer;
     };
@@ -36,8 +36,8 @@ interface FileNameProps {
 };
 
 const FileName = styled.span<FileNameProps>`
+    text-align: center;
     padding: .25rem;
-    /* background-color: ${({ $selected }) => $selected && 'rgba(255, 255, 255, 0.25)'}; */
 `;
 
 interface FileProps {
@@ -45,9 +45,10 @@ interface FileProps {
     filename: string;
     color?: string;
     onDoubleClick?: () => void;
+    noDrag?: boolean;
 };
 
-const File: React.FC<FileProps> = ({ icon, filename, color, onDoubleClick }) => {
+const File: React.FC<FileProps> = ({ icon, filename, color, onDoubleClick, noDrag }) => {
     const [selected, setSelected] = useState(false);
 
     const fileRef = useRef<HTMLDivElement>(null);
@@ -72,6 +73,7 @@ const File: React.FC<FileProps> = ({ icon, filename, color, onDoubleClick }) => 
             handle='.file'
             nodeRef={fileRef}
             bounds='parent'
+            disabled={noDrag}
         >
             <FileWrapper
                 ref={fileRef}
