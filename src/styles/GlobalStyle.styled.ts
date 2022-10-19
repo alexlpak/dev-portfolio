@@ -20,9 +20,8 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         overflow: hidden;
         user-select: none;
-        /* & * {
-            outline: 1px solid orange;
-        }; */
+        /* The following line is used for CSS debugging */
+        /* & * { outline: 1px solid white; }; */
     };
 `;
 

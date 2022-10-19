@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Typography from '../Typography';
 import GitHubButton from './GitHubButton';
 import TimeDisplay from './TimeDisplay';
 
@@ -28,8 +29,8 @@ const MenuBar: React.FC = () => {
     return (
         <MenuBarWrapper>
             <LeftMenuItems>
+                <Typography>Alex Pak</Typography>
                 <GitHubButton />
-                Welcome!
             </LeftMenuItems>
             <RightMenuItems>
                 <TimeDisplay />

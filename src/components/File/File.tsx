@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import Draggable from 'react-draggable';
-
 interface FileWrapperProps {
     $selected?: boolean;
 };
@@ -28,7 +27,6 @@ const FileWrapper = styled.div<FileWrapperProps>`
 
 const FileIcon = styled(FontAwesomeIcon)`
     height: 2.5rem;
-    filter: drop-shadow(0rem .125rem .125rem rgb(0 0 0 / 25%));
 `;
 
 interface FileNameProps {
@@ -45,10 +43,11 @@ interface FileProps {
     filename: string;
     color?: string;
     onDoubleClick?: () => void;
+    onSelect?: (selected: boolean) => void;
     noDrag?: boolean;
 };
 
-const File: React.FC<FileProps> = ({ icon, filename, color, onDoubleClick, noDrag }) => {
+const File: React.FC<FileProps> = ({ icon, filename, color, onSelect, onDoubleClick, noDrag }) => {
     const [selected, setSelected] = useState(false);
 
     const fileRef = useRef<HTMLDivElement>(null);
@@ -67,6 +66,11 @@ const File: React.FC<FileProps> = ({ icon, filename, color, onDoubleClick, noDra
             window.removeEventListener('click', handleClick);
         };
     }, []);
+
+    useEffect(() => {
+        if (onSelect) onSelect(selected);
+        // eslint-disable-next-line
+    }, [selected]);
 
     return (
         <Draggable

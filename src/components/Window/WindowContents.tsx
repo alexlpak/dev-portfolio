@@ -5,6 +5,8 @@ import File from '../File/File';
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
 import WindowBody from './WindowBody';
 import { useWindowContext } from './Window';
+import WindowPreview from './WindowPreview';
+import { useFileSystemContext } from '../../contexts/FileSystemContext';
 
 const WindowContentsWrapper = styled.div`
     display: flex;
@@ -15,7 +17,7 @@ const WindowContentsWrapper = styled.div`
 
 const WindowContents: React.FC = () => {
     const { currentDirectory, setCurrentDirectory } = useWindowContext();
-
+    const { selectedFile, setSelectedFile } = useFileSystemContext();
     return (
         <WindowContentsWrapper>
             <WindowNavigation />
@@ -39,10 +41,21 @@ const WindowContents: React.FC = () => {
                             filename={file.filename}
                             icon={file.icon}
                             onDoubleClick={file.onOpen}
+                            onSelect={(isSelected) => {
+                                if (isSelected) setSelectedFile(() => file);
+                            }}
                         />
                     )
                 })}
             </WindowBody>
+            {selectedFile.filename && <WindowPreview
+                title={selectedFile.filename}
+                thumbnailSrc={selectedFile.preview.thumbnailSrc || 'white'}
+                description={selectedFile.preview?.description || ''}
+                tags={selectedFile.preview?.tags || []}
+                repo={selectedFile.preview.repo || ''}
+                href={selectedFile.preview.href || ''}
+            />}
         </WindowContentsWrapper>
     );
 };
