@@ -61,7 +61,7 @@ const data: Directories = [
                         preview: {
                             title: `Shatter'd Cell Solutions`,
                             thumbnailSrc: ShatterdCellThumbnail,
-                            description: 'Created for a cell phone repair shop in Edmond, Oklahoma, the goal for this site was to redesign and simplify their site, focusing on user-experience.',
+                            description: 'Created for a cell phone repair shop in Edmond, Oklahoma. The goal for this site was to redesign and simplify their site, focusing on user-experience.',
                             tags: ['React JS', 'Styled Components', 'React Router'],
                             href: 'https://shatterdcell.com/',
                             repo: 'https://github.com/alexlpak/shatterd-cell-solutions',
