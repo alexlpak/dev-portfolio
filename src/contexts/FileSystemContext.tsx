@@ -139,7 +139,7 @@ const data: Directories = [
                         preview: {
                             title: `Flappy Bird`,
                             thumbnailSrc: FlappyThumbnail,
-                            description: 'A simple "Flappy Bird" clone using Phaser JS and TypeScript."',
+                            description: 'A simple "Flappy Bird" clone using Phaser JS and TypeScript.',
                             tags: ['Phaser JS', 'TypeScript'],
                             repo: 'https://github.com/alexlpak/ap-flappy',
                             href: 'https://ap-flappy.netlify.app/',
