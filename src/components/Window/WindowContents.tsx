@@ -6,7 +6,6 @@ import { faFolder } from '@fortawesome/free-solid-svg-icons';
 import WindowBody from './WindowBody';
 import { useWindowContext } from './Window';
 import WindowPreview from './WindowPreview';
-import { useFileSystemContext } from '../../contexts/FileSystemContext';
 
 const WindowContentsWrapper = styled.div`
     display: flex;
