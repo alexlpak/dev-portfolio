@@ -47,7 +47,7 @@ interface FileProps {
     noDrag?: boolean;
 };
 
-const File: React.FC<FileProps> = ({ icon, filename, color, onSelect, onDoubleClick, noDrag }) => {
+const File: React.FC<FileProps> = ({ icon, filename, color, onSelect, onDoubleClick, noDrag = true }) => {
     const [selected, setSelected] = useState(false);
 
     const fileRef = useRef<HTMLDivElement>(null);

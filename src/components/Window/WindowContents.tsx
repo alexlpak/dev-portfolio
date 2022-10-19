@@ -25,7 +25,7 @@ const WindowContents: React.FC = () => {
                 {currentDirectory?.folders?.map(folder => {
                     return (
                         <File
-                            color='blue'
+                            color='#2374f8'
                             key={folder.directory}
                             filename={folder.directory}
                             icon={faFolder}
@@ -36,7 +36,7 @@ const WindowContents: React.FC = () => {
                 {currentDirectory?.files?.map(file => {
                     return (
                         <File
-                            color='orange'
+                            color='#2374f8'
                             key={file.filename}
                             filename={file.filename}
                             icon={file.icon}

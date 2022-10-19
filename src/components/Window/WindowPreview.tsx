@@ -24,7 +24,8 @@ interface WindowThumbnailProps {
 };
 
 const WindowThumbnail = styled.div<WindowThumbnailProps>`
-    background-color: ${({ $thumbnailSrc }) => $thumbnailSrc || 'orange'};
+    background-image: url(${({ $thumbnailSrc }) => $thumbnailSrc || 'orange'});
+    background-size: contain;
     width: 16rem;
     height: 9rem;
     border-radius: .5rem;
@@ -33,13 +34,14 @@ const WindowThumbnail = styled.div<WindowThumbnailProps>`
 const WindowPreview: React.FC<Preview> = ({ title, thumbnailSrc, description, tags, href, repo: source }) => {
     return (
         <WindowPreviewWrapper>
-            {title && <Typography>{title}</Typography>}
+            {title && <Typography size='1.25rem'>{title}</Typography>}
             <WindowThumbnail $thumbnailSrc={thumbnailSrc} />
             {description && <Typography>{description}</Typography>}
             {tags && <FlexGroup>                
                 {tags && tags.map(tag => {
                     return (
                         <Chip
+                            key={`${tag}-${title}`}
                             color='black'
                             backgroundColor='white'
                         >

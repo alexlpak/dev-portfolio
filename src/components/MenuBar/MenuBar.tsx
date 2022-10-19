@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from '../Link';
 import Typography from '../Typography';
 import GitHubButton from './GitHubButton';
 import TimeDisplay from './TimeDisplay';
+import Resume from '../../assets/pdf/pak_resume_2022.pdf';
 
 const MenuBarWrapper = styled.div`
     display: flex;
@@ -31,6 +33,8 @@ const MenuBar: React.FC = () => {
             <LeftMenuItems>
                 <Typography>Alex Pak</Typography>
                 <GitHubButton />
+                <Link href='mailto: alexlpak@gmail.com'>Contact</Link>
+                <Link href={Resume} target='_blank'>Resume</Link>
             </LeftMenuItems>
             <RightMenuItems>
                 <TimeDisplay />

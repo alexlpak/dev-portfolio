@@ -10,7 +10,8 @@ interface FlexGroupStyledProps {
 const FlexGroupStyled = styled.div<FlexGroupStyledProps>`
     display: flex;
     flex-direction: ${({ $flexDirection }) => $flexDirection};
-    gap: ${({ $gap }) => $gap || '1rem'};
+    gap: ${({ $gap }) => $gap || '.5rem'};
+    flex-wrap: wrap;
 `;
 
 interface FlexGroupProps {
