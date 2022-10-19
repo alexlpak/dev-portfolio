@@ -10,8 +10,8 @@ import { useFileSystemContext } from '../../contexts/FileSystemContext';
 
 const WindowContentsWrapper = styled.div`
     display: flex;
-    background-color: rgb(255 255 255 / 25%);
-    backdrop-filter: blur(4px);
+    background-color: rgb(0 0 0 / 25%);
+    backdrop-filter: blur(8px);
     color: white;
     flex-grow: 1;
 `;
