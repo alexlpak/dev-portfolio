@@ -14,6 +14,9 @@ const WindowPreviewWrapper = styled.div`
     color: white;
     padding: 1rem;
     max-width: 18rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: normal;
     & a {
         color: white;
     }

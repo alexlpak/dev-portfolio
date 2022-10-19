@@ -73,7 +73,7 @@ const data: Directories = [
                         preview: {
                             title: `Terry Wedding`,
                             thumbnailSrc: TerryWeddingThumbnail,
-                            description: 'Created for a couple who got married January, 2020. This website introduces the couple to users, as well as providing an intuitive RSVP process that links with a backend database that was setup in Google\'s Firebase Realtime DB.\n\nThe couple was provided a specific page that allows them to view RSVP analytics and manage invited guests.',
+                            description: 'Created for a couple who got married January, 2020. This website introduces the couple to users, as well as providing an intuitive RSVP process that links with a backend database that was setup in Google\'s Firebase Realtime DB.',
                             tags: ['jQuery', 'Firebase Realtime DB'],
                             href: 'https://alexlpak.github.io/terry-wedding/',
                             repo: 'https://github.com/alexlpak/terry-wedding',
