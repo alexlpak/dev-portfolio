@@ -10,7 +10,7 @@ const WindowPreviewWrapper = styled.div`
     flex-direction: column;
     gap: 1rem;
     align-items: center;
-    background-color: #3b3b3b;
+    background-color: rgb(59 59 59 / 50%);
     color: white;
     padding: 1rem;
     max-width: 18rem;

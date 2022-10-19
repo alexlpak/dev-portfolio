@@ -6,7 +6,7 @@ import { useWindowContext } from './Window';
 const WindowNavigationWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #3b3b3b;
+    background-color: #212121;
     color: white;
 `;
 

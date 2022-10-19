@@ -7,6 +7,7 @@ import { useWindowGlobalContext } from '../../contexts/WindowGlobalContext';
 import { Directory, useFileSystemContext } from '../../contexts/FileSystemContext';
 import Window from '../Window/Window';
 import uniqid from 'uniqid';
+import Wallpaper from './Wallpaper';
 
 const DesktopBodyWrapper = styled.div`
     display: flex;
@@ -39,6 +40,7 @@ const DesktopBody: React.FC = () => {
 
     return (
         <DesktopBodyWrapper className='desktop'>
+            <Wallpaper />
             <DesktopFileGrid>
                 {files.filter(file => file.directory === 'Desktop').map(rootDirectory => {
                     const addNewWindow = (directory: Directory) => {

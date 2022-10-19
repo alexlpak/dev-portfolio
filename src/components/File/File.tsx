@@ -14,7 +14,7 @@ const FileWrapper = styled.div<FileWrapperProps>`
     justify-content: center;
     gap: .5rem;
     padding: .5rem;
-    background-color: ${({ $selected }) => $selected && 'rgba(0, 0, 0, 0.25)'};
+    background-color: ${({ $selected }) => $selected && 'rgba(0, 0, 0, 0.10)'};
     border: none;
     border-radius: .25rem;
     align-self: flex-start;

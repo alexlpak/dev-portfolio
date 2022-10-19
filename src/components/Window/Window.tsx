@@ -15,7 +15,6 @@ const WindowWrapper = styled.div`
     border-radius: .5rem;
     border: none;
     overflow: hidden;
-    box-shadow: 0rem .125rem .125rem rgb(0 0 0 / 25%);
     resize: both;
     min-width: 40rem;
     min-height: 20rem;
