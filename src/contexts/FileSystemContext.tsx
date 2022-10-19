@@ -1,6 +1,6 @@
 import React, { useContext, useState, createContext, useEffect } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faCalculator, faGamepad, faHeart, faMobile, faNoteSticky, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faGamepad, faHeart, faMobile, faNoteSticky, faStar } from '@fortawesome/free-solid-svg-icons';
 import ShatterdCellThumbnail from '../assets/images/shatterd-cell-thumbnail.jpg';
 import TerryWeddingThumbnail from '../assets/images/terry-wedding-thumbnail.jpg';
 import PakWeddingThumbnail from '../assets/images/pak-wedding-thumbnail.jpg';
