@@ -61,8 +61,8 @@ const WindowMenuBar: React.FC<WindowMenuBarProps> = ({ className }) => {
         <WindowMenuBarWrapper className={className}>
             <MenuBarButtonsWrapper>
                 <MenuBarButton $color='red' onClick={() => closeWindow()} />
-                <MenuBarButton $color='orange' />
-                <MenuBarButton $color='green' />
+                {/* <MenuBarButton $color='orange' />
+                <MenuBarButton $color='green' /> */}
             </MenuBarButtonsWrapper>
             <WindowLabel>{currentDirectory.directory}</WindowLabel>
         </WindowMenuBarWrapper>

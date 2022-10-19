@@ -19,7 +19,7 @@ const MenuBarWrapper = styled.div`
 
 const LeftMenuItems = styled.div`
     display: flex;
-    gap: .5rem;
+    gap: 1rem;
 `;
 
 const RightMenuItems = styled.div`

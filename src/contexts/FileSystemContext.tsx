@@ -1,11 +1,12 @@
 import React, { useContext, useState, createContext, useEffect } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faGamepad, faHeart, faMobile, faNoteSticky, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faGamepad, faHeart, faMobile, faNoteSticky, faStar } from '@fortawesome/free-solid-svg-icons';
 import ShatterdCellThumbnail from '../assets/images/shatterd-cell-thumbnail.jpg';
 import TerryWeddingThumbnail from '../assets/images/terry-wedding-thumbnail.jpg';
 import PakWeddingThumbnail from '../assets/images/pak-wedding-thumbnail.jpg';
 import CodeEditorThumbnail from '../assets/images/code-editor-thumbnail.jpg';
 import FlappyThumbnail from '../assets/images/ap-flappy-thumbnail.jpg';
+import PortfolioThumbnail from '../assets/images/portfolio-thumbnail.jpg';
 export interface FileType {
     filename: string;
     icon: IconProp;
@@ -94,6 +95,18 @@ const data: Directories = [
                             tags: ['React JS', 'TypeScript', 'Styled Components', 'Express', 'AirTable'],
                             repo: 'https://github.com/alexlpak/joining-the-pak',
                             href: 'https://www.joiningthepak.com/',
+                        }
+                    },
+                    {
+                        filename: `Dev Portfolio`,
+                        icon: faCode,
+                        preview: {
+                            title: `Dev Portfolio`,
+                            thumbnailSrc: PortfolioThumbnail,
+                            description: 'This contains the very site you are actively viewing. This is where all my projects will live. New features will continuously be implemented.',
+                            tags: ['React JS', 'TypeScript', 'Styled Components'],
+                            repo: 'https://github.com/alexlpak/dev-portfolio',
+                            href: 'https://alexpak.dev/',
                         }
                     },
                 ],

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface FlexGroupStyledProps {
     $flexDirection?: string;
@@ -12,6 +12,12 @@ const FlexGroupStyled = styled.div<FlexGroupStyledProps>`
     flex-direction: ${({ $flexDirection }) => $flexDirection};
     gap: ${({ $gap }) => $gap || '.5rem'};
     flex-wrap: wrap;
+    ${({ $centered }) => {
+        if ($centered) return css`
+            align-items: center;
+            justify-content: center;
+        `;
+    }};
 `;
 
 interface FlexGroupProps {

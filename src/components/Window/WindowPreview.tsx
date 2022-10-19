@@ -37,7 +37,7 @@ const WindowPreview: React.FC<Preview> = ({ title, thumbnailSrc, description, ta
             {title && <Typography size='1.25rem'>{title}</Typography>}
             <WindowThumbnail $thumbnailSrc={thumbnailSrc} />
             {description && <Typography>{description}</Typography>}
-            {tags && <FlexGroup>                
+            {tags && <FlexGroup centered>                
                 {tags && tags.map(tag => {
                     return (
                         <Chip
