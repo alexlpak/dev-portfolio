@@ -155,8 +155,6 @@ const data: Directories = [
 interface FileSystemContextType {
     files: Directories;
     setFiles: React.Dispatch<React.SetStateAction<Directories>>;
-    selectedFile: FileType;
-    setSelectedFile: React.Dispatch<React.SetStateAction<FileType>>;
 };
 
 const FileSystemContext = createContext<FileSystemContextType>({} as FileSystemContextType);
@@ -171,7 +169,6 @@ interface FileSystemContextProviderProps {
 
 export const FileSystemContextProvider: React.FC<FileSystemContextProviderProps> = ({ children }) => {
     const [files, setFiles] = useState(data);
-    const [selectedFile, setSelectedFile] = useState(EmptyFile);
 
     const addParentToObject = (directory: Directory) => {
         directory.folders.forEach(folder => {
@@ -193,7 +190,6 @@ export const FileSystemContextProvider: React.FC<FileSystemContextProviderProps>
 
     const value = {
         files, setFiles,
-        selectedFile, setSelectedFile
     };
 
     return (

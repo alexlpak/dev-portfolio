@@ -4,7 +4,7 @@ import WindowContents from './WindowContents';
 import styled from 'styled-components';
 import Draggable from 'react-draggable';
 import WindowLocation from './WindowLocation';
-import { Directory, EmptyFile, useFileSystemContext } from '../../contexts/FileSystemContext';
+import { Directory, EmptyFile } from '../../contexts/FileSystemContext';
 import { useWindowGlobalContext } from '../../contexts/WindowGlobalContext';
 import { FileType } from '../../contexts/FileSystemContext';
 
@@ -23,8 +23,8 @@ const WindowWrapper = styled.div`
 interface WindowContextType {
     currentDirectory: Directory;
     setCurrentDirectory: React.Dispatch<React.SetStateAction<Directory>>;
-    currentFile: FileType;
-    setCurrentFile: React.Dispatch<React.SetStateAction<FileType>>;
+    selectedFile: FileType;
+    setSelectedFile: React.Dispatch<React.SetStateAction<FileType>>;
     rootDirectory: Directory;
     setRootDirectory: React.Dispatch<React.SetStateAction<Directory>>;
     windowRef: React.RefObject<HTMLDivElement>;
@@ -47,17 +47,16 @@ const Window: React.FC<WindowProps> = ({ initDirectory, id }) => {
     const windowId = id;
 
     const { windowZIndex, lastClickedWindow } = useWindowGlobalContext();
-    const { setSelectedFile } = useFileSystemContext();
 
     const [currentDirectory, setCurrentDirectory] = useState(initDirectory as Directory);
-    const [currentFile, setCurrentFile] = useState({} as FileType);
     const [rootDirectory, setRootDirectory] = useState({} as Directory);
     const [localZIndex, setLocalZIndex] = useState(windowZIndex.current);
+    const [selectedFile, setSelectedFile] = useState({} as FileType);
 
     const value = {
         currentDirectory, setCurrentDirectory,
-        currentFile, setCurrentFile,
-        rootDirectory, setRootDirectory, windowRef, windowId
+        rootDirectory, setRootDirectory, windowRef, windowId,
+        selectedFile, setSelectedFile
     };
 
     const setWindowTop = () => {

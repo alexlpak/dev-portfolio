@@ -17,8 +17,7 @@ const WindowContentsWrapper = styled.div`
 `;
 
 const WindowContents: React.FC = () => {
-    const { currentDirectory, setCurrentDirectory } = useWindowContext();
-    const { selectedFile, setSelectedFile } = useFileSystemContext();
+    const { currentDirectory, setCurrentDirectory, selectedFile, setSelectedFile } = useWindowContext();
     return (
         <WindowContentsWrapper>
             <WindowNavigation />
