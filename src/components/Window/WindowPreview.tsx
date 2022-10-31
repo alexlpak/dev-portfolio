@@ -54,7 +54,7 @@ const WindowPreview: React.FC<Preview> = ({ title, thumbnailSrc, description, ta
                 })}
             </FlexGroup>}
             {href && <ButtonLink href={href} target='_blank'>View Deployment</ButtonLink>}
-            {source && <ButtonLink href={source} target='_blank'>View Source Code</ButtonLink>}
+            {/* {source && <ButtonLink href={source} target='_blank'>View Source Code</ButtonLink>} */}
         </WindowPreviewWrapper>
     );
 };
