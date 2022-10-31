@@ -32,7 +32,7 @@ export interface Preview {
     thumbnailSrc: string;
     description: string;
     tags: string[];
-    repo: string;
+    repo?: string;
     href: string;
 };
 
@@ -75,8 +75,7 @@ const data: Directories = [
                             thumbnailSrc: TerryWeddingThumbnail,
                             description: 'Created for a couple who got married January, 2020. This website introduces the couple to users, as well as providing an intuitive RSVP process that links with a backend database that was setup in Google\'s Firebase Realtime DB.',
                             tags: ['jQuery', 'Firebase Realtime DB'],
-                            href: 'https://alexlpak.github.io/terry-wedding/',
-                            repo: 'https://github.com/alexlpak/terry-wedding',
+                            href: 'https://alexlpak.github.io/terry-wedding/'
                         }
                     },
                 ],
