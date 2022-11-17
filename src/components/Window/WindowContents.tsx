@@ -47,13 +47,13 @@ const WindowContents: React.FC = () => {
                     )
                 })}
             </WindowBody>
-            {selectedFile.filename && <WindowPreview
+            {selectedFile.filename && selectedFile.preview && <WindowPreview
                 title={selectedFile.filename}
-                thumbnailSrc={selectedFile.preview.thumbnailSrc || 'white'}
-                description={selectedFile.preview?.description || ''}
-                tags={selectedFile.preview?.tags || []}
-                repo={selectedFile.preview.repo || ''}
-                href={selectedFile.preview.href || ''}
+                thumbnailSrc={selectedFile?.preview?.thumbnailSrc || 'white'}
+                description={selectedFile?.preview?.description || ''}
+                tags={selectedFile?.preview?.tags || []}
+                repo={selectedFile?.preview?.repo || ''}
+                href={selectedFile?.preview?.href || ''}
             />}
         </WindowContentsWrapper>
     );

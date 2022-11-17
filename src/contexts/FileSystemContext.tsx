@@ -1,16 +1,17 @@
 import React, { useContext, useState, createContext, useEffect } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faCode, faGamepad, faHeart, faMobile, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faFile, faGamepad, faHeart, faMobile, faStar } from '@fortawesome/free-solid-svg-icons';
 import ShatterdCellThumbnail from '../assets/images/shatterd-cell-thumbnail.jpg';
 import TerryWeddingThumbnail from '../assets/images/terry-wedding-thumbnail.jpg';
 import PakWeddingThumbnail from '../assets/images/pak-wedding-thumbnail.jpg';
 import FlappyThumbnail from '../assets/images/ap-flappy-thumbnail.jpg';
 import PortfolioThumbnail from '../assets/images/portfolio-thumbnail.jpg';
+import ResumePDF from '../assets/pdf/pak_resume_2022.pdf';
 export interface FileType {
     filename: string;
     icon: IconProp;
     onOpen?: () => void;
-    preview: Preview;
+    preview?: Preview;
 };
 
 export const EmptyFile: FileType = {
@@ -131,6 +132,19 @@ const data: Directories = [
             }
         ]
     },
+    {
+        directory: 'Documents',
+        files: [
+            {
+                filename: `Resume.pdf`,
+                icon: faFile,
+                onOpen: () => {
+                    window.open(ResumePDF);
+                }
+            }
+        ],
+        folders: []
+    }
 ];
 
 interface FileSystemContextType {

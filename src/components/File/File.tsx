@@ -19,7 +19,7 @@ const FileWrapper = styled.div<FileWrapperProps>`
     border-radius: .25rem;
     align-self: flex-start;
     justify-self: flex-start;
-    width: 5rem;
+    width: 7rem;
     &:hover {
         cursor: pointer;
     };
@@ -36,6 +36,8 @@ interface FileNameProps {
 const FileName = styled.span<FileNameProps>`
     text-align: center;
     padding: .25rem;
+    overflow-wrap: break-word;
+    width: 100%;
 `;
 
 interface FileProps {
