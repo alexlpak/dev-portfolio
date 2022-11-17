@@ -1,10 +1,9 @@
 import React, { useContext, useState, createContext, useEffect } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faCode, faGamepad, faHeart, faMobile, faNoteSticky, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faGamepad, faHeart, faMobile, faStar } from '@fortawesome/free-solid-svg-icons';
 import ShatterdCellThumbnail from '../assets/images/shatterd-cell-thumbnail.jpg';
 import TerryWeddingThumbnail from '../assets/images/terry-wedding-thumbnail.jpg';
 import PakWeddingThumbnail from '../assets/images/pak-wedding-thumbnail.jpg';
-import CodeEditorThumbnail from '../assets/images/code-editor-thumbnail.jpg';
 import FlappyThumbnail from '../assets/images/ap-flappy-thumbnail.jpg';
 import PortfolioThumbnail from '../assets/images/portfolio-thumbnail.jpg';
 export interface FileType {
@@ -109,24 +108,6 @@ const data: Directories = [
                             href: 'https://alexpak.dev/',
                         }
                     },
-                ],
-                folders: []
-            },
-            {
-                directory: 'Tools',
-                files: [
-                    {
-                        filename: `Code Editor`,
-                        icon: faNoteSticky,
-                        preview: {
-                            title: `Code Editor`,
-                            thumbnailSrc: CodeEditorThumbnail,
-                            description: 'A simple code editor that highlights basic JavaScript syntax.',
-                            tags: ['React', 'SCSS'],
-                            repo: 'https://github.com/alexlpak/code-editor',
-                            href: 'https://ap-code-editor.netlify.app/',
-                        }
-                    }
                 ],
                 folders: []
             },
