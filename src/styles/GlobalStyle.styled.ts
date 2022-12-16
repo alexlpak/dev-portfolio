@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
     html {
-        font-size: 16px;
+        font-size: 14px;
         height: 100%;
         width: 100%;
         margin: 0;
@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
         overflow: hidden;
         user-select: none;
         /* The following line is used for CSS debugging */
-        /* & * { outline: 1px solid white; }; */
+        /* ${process.env.NODE_ENV === 'development' && `& * { outline: 1px solid rgba(255 255 255 / 10%); };`} */
     };
 `;
 

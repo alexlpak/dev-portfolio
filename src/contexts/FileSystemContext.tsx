@@ -1,12 +1,11 @@
 import React, { useContext, useState, createContext, useEffect } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faCode, faFile, faGamepad, faHeart, faMobile, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faGamepad, faHeart, faMobile, faStar } from '@fortawesome/free-solid-svg-icons';
 import ShatterdCellThumbnail from '../assets/images/shatterd-cell-thumbnail.jpg';
 import TerryWeddingThumbnail from '../assets/images/terry-wedding-thumbnail.jpg';
 import PakWeddingThumbnail from '../assets/images/pak-wedding-thumbnail.jpg';
 import FlappyThumbnail from '../assets/images/ap-flappy-thumbnail.jpg';
 import PortfolioThumbnail from '../assets/images/portfolio-thumbnail.jpg';
-import ResumePDF from '../assets/pdf/pak_resume_2022.pdf';
 export interface FileType {
     filename: string;
     icon: IconProp;
@@ -75,7 +74,7 @@ const data: Directories = [
                             thumbnailSrc: TerryWeddingThumbnail,
                             description: 'Created for a couple who got married January, 2020. This website introduces the couple to users, as well as providing an intuitive RSVP process that links with a backend database that was setup in Google\'s Firebase Realtime DB.',
                             tags: ['jQuery', 'Firebase Realtime DB'],
-                            href: 'https://alexlpak.github.io/terry-wedding/',
+                            href: 'https://terry-wedding.netlify.app/',
                             repo: 'https://github.com/alexlpak/terry-wedding'
                         }
                     },
@@ -86,18 +85,6 @@ const data: Directories = [
                 directory: 'Personal',
                 files: [
                     {
-                        filename: `Pak Wedding`,
-                        icon: faHeart,
-                        preview: {
-                            title: `Pak Wedding`,
-                            thumbnailSrc: PakWeddingThumbnail,
-                            description: 'This site was created for my own wedding on November 6th, 2022. The goal for this site was to create something incredibly easy to use for our guests. The database used is AirTable and the backend is a Heroku-deployed Express application.',
-                            tags: ['React JS', 'TypeScript', 'Styled Components', 'Express', 'AirTable'],
-                            repo: 'https://github.com/alexlpak/joining-the-pak',
-                            href: 'https://www.joiningthepak.com/',
-                        }
-                    },
-                    {
                         filename: `Dev Portfolio`,
                         icon: faCode,
                         preview: {
@@ -107,6 +94,18 @@ const data: Directories = [
                             tags: ['React JS', 'TypeScript', 'Styled Components'],
                             repo: 'https://github.com/alexlpak/dev-portfolio',
                             href: 'https://alexpak.dev/',
+                        }
+                    },
+                    {
+                        filename: `Pak Wedding`,
+                        icon: faHeart,
+                        preview: {
+                            title: `Pak Wedding`,
+                            thumbnailSrc: PakWeddingThumbnail,
+                            description: 'This site was created for my own wedding on November 6th, 2022. The goal for this site was to create something incredibly easy to use for our guests. The database used is AirTable and the backend is a Heroku-deployed Express application.',
+                            tags: ['React JS', 'TypeScript', 'Styled Components', 'Express', 'AirTable'],
+                            repo: 'https://github.com/alexlpak/joining-the-pak',
+                            href: 'https://www.joiningthepak.com/',
                         }
                     },
                 ],
@@ -131,19 +130,6 @@ const data: Directories = [
                 folders: []
             }
         ]
-    },
-    {
-        directory: 'Documents',
-        files: [
-            {
-                filename: `Resume.pdf`,
-                icon: faFile,
-                onOpen: () => {
-                    window.open(ResumePDF);
-                }
-            }
-        ],
-        folders: []
     }
 ];
 
