@@ -48,12 +48,14 @@ const WindowContents: React.FC = () => {
                 })}
             </WindowBody>
             {selectedFile.filename && selectedFile.preview && <WindowPreview
-                title={selectedFile.filename}
+                title={selectedFile?.preview?.title}
                 thumbnailSrc={selectedFile?.preview?.thumbnailSrc || 'white'}
                 description={selectedFile?.preview?.description || ''}
                 tags={selectedFile?.preview?.tags || []}
                 repo={selectedFile?.preview?.repo || ''}
                 href={selectedFile?.preview?.href || ''}
+                download={selectedFile?.preview?.download}
+                filesize={selectedFile?.preview?.filesize}
             />}
         </WindowContentsWrapper>
     );

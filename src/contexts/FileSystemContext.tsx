@@ -1,11 +1,15 @@
 import React, { useContext, useState, createContext, useEffect } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faCode, faGamepad, faHeart, faMobile, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faFilePdf, faFileZipper, faGamepad, faHeart, faMobile, faStar } from '@fortawesome/free-solid-svg-icons';
 import ShatterdCellThumbnail from '../assets/images/shatterd-cell-thumbnail.jpg';
 import TerryWeddingThumbnail from '../assets/images/terry-wedding-thumbnail.jpg';
 import PakWeddingThumbnail from '../assets/images/pak-wedding-thumbnail.jpg';
 import FlappyThumbnail from '../assets/images/ap-flappy-thumbnail.jpg';
 import PortfolioThumbnail from '../assets/images/portfolio-thumbnail.jpg';
+import OceanSprayZIP from '../assets/downloads/alex_pak_aaf_2018_ocean_spray_campaign_creative.zip';
+import OceanSprayThumbnail from '../assets/images/ocean-spray-thumbnail.jpg';
+import BordenRedesignThumbnail from '../assets/images/borden-thumbnail.jpg';
+import BordenRedesignPDF from '../assets/pdf/alex_pak_borden_redesign_presentation.pdf';
 export interface FileType {
     filename: string;
     icon: IconProp;
@@ -33,6 +37,8 @@ export interface Preview {
     tags: string[];
     repo?: string;
     href: string;
+    download?: boolean;
+    filesize?: string;
 };
 
 export interface Directory {
@@ -126,6 +132,38 @@ const data: Directories = [
                             href: 'https://ap-flappy.netlify.app/',
                         }
                     }
+                ],
+                folders: []
+            },
+            {
+                directory: 'Graphic Design',
+                files: [
+                    {
+                        filename: 'Ocean Spray Ad Campaign',
+                        icon: faFileZipper,
+                        preview: {
+                            title: 'Ocean Spray Ad Campaign',
+                            thumbnailSrc: OceanSprayThumbnail,
+                            description: 'These assets were created as part of the 2018 American Advertising Federation National Student Advertising Competition for the client, Ocean Spray.',
+                            tags: ['Photoshop', 'Illustrator', 'After Effects', 'Cinema 4D'],
+                            href: OceanSprayZIP,
+                            download: true,
+                            filesize: '13.7 MB'
+                        }
+                    },
+                    {
+                        filename: 'Borden Rebranding Campaign',
+                        icon: faFilePdf,
+                        preview: {
+                            title: 'Borden Rebranding Campaign',
+                            thumbnailSrc: BordenRedesignThumbnail,
+                            description: 'This advertising campaign presentation was created with the focus on rebranding the classic dairy brand, Borden. In order to do this, a new logo was designed, as well as the introduction of a new product, Borden Blendz.',
+                            tags: ['Photoshop', 'Illustrator'],
+                            href: BordenRedesignPDF,
+                            download: true,
+                            filesize: '5.7 MB'
+                        }
+                    },
                 ],
                 folders: []
             }

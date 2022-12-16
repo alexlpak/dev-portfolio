@@ -33,10 +33,10 @@ const WindowThumbnail = styled.div<WindowThumbnailProps>`
     border-radius: .5rem;
 `;
 
-const WindowPreview: React.FC<Preview> = ({ title, thumbnailSrc, description, tags, href, repo: source }) => {
+const WindowPreview: React.FC<Preview> = ({ title, thumbnailSrc, description, tags, href, repo, download, filesize }) => {
     return (
         <WindowPreviewWrapper>
-            {title && <Typography size='1.25rem'>{title}</Typography>}
+            {title && <Typography textAlign='center' size='1.25rem'>{title}</Typography>}
             <WindowThumbnail $thumbnailSrc={thumbnailSrc} />
             {description && <Typography>{description}</Typography>}
             {tags && <FlexGroup centered>                
@@ -52,8 +52,8 @@ const WindowPreview: React.FC<Preview> = ({ title, thumbnailSrc, description, ta
                     )
                 })}
             </FlexGroup>}
-            {href && <ButtonLink href={href} target='_blank'>View Deployment</ButtonLink>}
-            {source && <ButtonLink href={source} target='_blank'>View Source Code</ButtonLink>}
+            {href && <ButtonLink filesize={filesize} download={download} href={href} target='_blank'>{download ? 'Download' : 'View Deployment'}</ButtonLink>}
+            {repo && <ButtonLink href={repo} target='_blank'>View Source Code</ButtonLink>}
         </WindowPreviewWrapper>
     );
 };
