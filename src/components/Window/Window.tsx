@@ -58,6 +58,7 @@ const Window: React.FC<WindowProps> = ({ initDirectory, id }) => {
         selectedFile, setSelectedFile
     };
 
+    
     const setWindowTop = () => {
         if (!lastClickedWindow.current || !windowRef.current) return;
         if (lastClickedWindow.current === windowRef.current) return;
@@ -68,6 +69,11 @@ const Window: React.FC<WindowProps> = ({ initDirectory, id }) => {
             else return localZIndex;
         });
     };
+    
+    useEffect(() => {
+        setWindowTop();
+        // eslint-disable-next-line
+    }, []);
 
     useEffect(() => {
         setSelectedFile(() => EmptyFile);
