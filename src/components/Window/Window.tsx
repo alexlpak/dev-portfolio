@@ -7,7 +7,6 @@ import WindowLocation from './WindowLocation';
 import { Directory, EmptyFile } from '../../contexts/FileSystemContext';
 import { useWindowGlobalContext } from '../../contexts/WindowGlobalContext';
 import { FileType } from '../../contexts/FileSystemContext';
-import { theme } from '../../styles/theme';
 
 const WindowWrapper = styled.div`
     display: flex;
