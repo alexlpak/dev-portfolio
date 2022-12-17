@@ -6,11 +6,12 @@ import { faFolder } from '@fortawesome/free-solid-svg-icons';
 import WindowBody from './WindowBody';
 import { useWindowContext } from './Window';
 import WindowPreview from './WindowPreview';
+import { theme } from '../../styles/theme';
 
 const WindowContentsWrapper = styled.div`
     display: flex;
-    background-color: rgb(0 0 0 / 25%);
-    backdrop-filter: blur(8px);
+    background-color: ${theme.colors.darkTransparent};
+    backdrop-filter: blur(${theme.blur});
     color: white;
     flex-grow: 1;
 `;

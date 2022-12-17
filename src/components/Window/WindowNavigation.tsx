@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Directory, useFileSystemContext } from '../../contexts/FileSystemContext';
+import { theme } from '../../styles/theme';
 import { useWindowContext } from './Window';
 
 const WindowNavigationWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #212121;
+    background-color: ${theme.colors.darkSolid};
     color: white;
 `;
 

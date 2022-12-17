@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import Draggable from 'react-draggable';
+import { theme } from '../../styles/theme';
 interface FileWrapperProps {
     $selected?: boolean;
 };
@@ -14,8 +15,7 @@ const FileWrapper = styled.div<FileWrapperProps>`
     justify-content: center;
     gap: .5rem;
     padding: .5rem;
-    background-color: ${({ $selected }) => $selected && 'rgba(0, 0, 0, 0.10)'};
-    border: none;
+    background-color: ${({ $selected }) => $selected && theme.colors.darkTransparentLite};
     border-radius: .25rem;
     align-self: flex-start;
     justify-self: flex-start;

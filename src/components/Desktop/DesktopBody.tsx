@@ -8,6 +8,7 @@ import { Directory, useFileSystemContext } from '../../contexts/FileSystemContex
 import Window from '../Window/Window';
 import uniqid from 'uniqid';
 import Wallpaper from './Wallpaper';
+import Dock from '../Dock/Dock';
 
 const DesktopBodyWrapper = styled.div`
     display: flex;
@@ -78,6 +79,7 @@ const DesktopBody: React.FC = () => {
                     <Window key={window.id} initDirectory={window.initDirectory} id={window.id} />
                 );
             })}
+            {process.env.NODE_ENV === 'development' && <Dock />}
         </DesktopBodyWrapper>
     );
 };

@@ -5,6 +5,7 @@ import Typography from '../Typography';
 import GitHubButton from './GitHubButton';
 import TimeDisplay from './TimeDisplay';
 import Resume from '../../assets/pdf/pak_resume_2022.pdf';
+import { theme } from '../../styles/theme';
 
 const MenuBarWrapper = styled.div`
     display: flex;
@@ -13,7 +14,7 @@ const MenuBarWrapper = styled.div`
     justify-content: space-between;
     width: 100%;
     padding: .5rem;
-    background-color: #212121;
+    background-color: ${theme.colors.darkSolid};
     color: white;
 `;
 

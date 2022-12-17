@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useWindowGlobalContext } from '../../contexts/WindowGlobalContext';
+import { theme } from '../../styles/theme';
 import { useWindowContext } from './Window';
 
 const WindowMenuBarWrapper = styled.div`
@@ -10,7 +11,7 @@ const WindowMenuBarWrapper = styled.div`
     align-items: center;
     padding: .5rem;
     color: white;
-    background-color: #212121;
+    background-color: ${theme.colors.darkSolid};
 `;
 
 interface WindowMenuBarProps {

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Preview } from '../../contexts/FileSystemContext';
+import { theme } from '../../styles/theme';
 import ButtonLink from '../ButtonLink';
 import Chip from '../Chip';
 import FlexGroup from '../FlexGroup';
@@ -10,7 +11,7 @@ const WindowPreviewWrapper = styled.div`
     flex-direction: column;
     gap: 1rem;
     align-items: center;
-    background-color: rgb(0 0 0 / 25%);
+    background-color: ${theme.colors.darkTransparentLite};
     color: white;
     padding: 1rem;
     width: 18rem;
@@ -26,7 +27,7 @@ interface WindowThumbnailProps {
 };
 
 const WindowThumbnail = styled.div<WindowThumbnailProps>`
-    background-image: url(${({ $thumbnailSrc }) => $thumbnailSrc || 'orange'});
+    background-image: url(${({ $thumbnailSrc }) => $thumbnailSrc || 'white'});
     background-size: contain;
     width: 16rem;
     height: 9rem;
