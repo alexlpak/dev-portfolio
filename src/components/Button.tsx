@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
-    padding: 1rem;
+    padding: .5rem 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     border-radius: .5rem;
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 export default Button;
