@@ -7,6 +7,7 @@ const Button = styled.button`
     justify-content: center;
     border: none;
     border-radius: .5rem;
+    transition: all 100ms ease;
     &:hover {
         scale: 1.05;
         cursor: pointer;
