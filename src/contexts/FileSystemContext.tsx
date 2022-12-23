@@ -134,38 +134,6 @@ const data: Directories = [
                     }
                 ],
                 folders: []
-            },
-            {
-                directory: 'Graphic Design',
-                files: [
-                    {
-                        filename: 'Ocean Spray Ad Campaign',
-                        icon: faFileZipper,
-                        preview: {
-                            title: 'Ocean Spray Ad Campaign',
-                            thumbnailSrc: OceanSprayThumbnail,
-                            description: 'These assets were created as part of the 2018 American Advertising Federation National Student Advertising Competition for the client, Ocean Spray.',
-                            tags: ['Photoshop', 'Illustrator', 'After Effects', 'Cinema 4D'],
-                            href: OceanSprayZIP,
-                            download: true,
-                            filesize: '13.7 MB'
-                        }
-                    },
-                    {
-                        filename: 'Borden Rebranding Campaign',
-                        icon: faFilePdf,
-                        preview: {
-                            title: 'Borden Rebranding Campaign',
-                            thumbnailSrc: BordenRedesignThumbnail,
-                            description: 'This advertising campaign presentation was created with the focus on rebranding the classic dairy brand, Borden. In order to do this, a new logo was designed, as well as the introduction of a new product, Borden Blendz.',
-                            tags: ['Photoshop', 'Illustrator'],
-                            href: BordenRedesignPDF,
-                            download: true,
-                            filesize: '5.7 MB'
-                        }
-                    },
-                ],
-                folders: []
             }
         ]
     }
