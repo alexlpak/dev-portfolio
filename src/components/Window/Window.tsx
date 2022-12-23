@@ -15,8 +15,6 @@ const WindowWrapper = styled(motion.div)`
     border-radius: .5rem;
     overflow: hidden;
     resize: both;
-    width: 40rem;
-    height: 40rem;
 `;
 
 interface WindowContextType {
@@ -60,7 +58,6 @@ const Window: React.FC<WindowProps> = ({ initDirectory, id, dragConstraints }) =
         rootDirectory, setRootDirectory, windowRef, windowId,
         selectedFile, setSelectedFile
     };
-
     
     const setWindowTop = () => {
         if (!lastClickedWindow.current || !windowRef.current) return;
@@ -99,8 +96,15 @@ const Window: React.FC<WindowProps> = ({ initDirectory, id, dragConstraints }) =
             ref={windowRef}
             onClick={setWindowTop}
             id={windowId}
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0, backdropFilter: 'blur(8px)' }}
+            initial={{ opacity: 0, y: -50, width: '0rem', height: '0rem' }}
+            animate={{
+                opacity: 1,
+                x: 0,
+                y: 0,
+                backdropFilter: 'blur(8px)',
+                width: '40rem',
+                height: '40rem'
+            }}
             exit={{ opacity: 0, y: -50 }}
             transition={{ type: 'spring', duration: 0.5 }}
             key={windowId}

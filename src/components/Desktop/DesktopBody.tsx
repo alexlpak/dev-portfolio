@@ -8,7 +8,6 @@ import { Directory, useFileSystemContext } from '../../contexts/FileSystemContex
 import Window from '../Window/Window';
 import uniqid from 'uniqid';
 import Wallpaper from './Wallpaper';
-import Dock from '../Dock/Dock';
 import { AnimatePresence } from 'framer-motion';
 
 const DesktopBodyWrapper = styled.div`
@@ -36,7 +35,11 @@ const DesktopBodyWrapper = styled.div`
     };
 `;
 
-const DesktopBody: React.FC = () => {
+interface DesktopBodyProps {
+    loggedIn: boolean;
+};
+
+const DesktopBody: React.FC<DesktopBodyProps> = ({ loggedIn }) => {
     const { files } = useFileSystemContext();
     const { windows, setWindows } = useWindowGlobalContext();
 
@@ -45,7 +48,7 @@ const DesktopBody: React.FC = () => {
     return (
         <DesktopBodyWrapper ref={constraintsRef}>
             <Wallpaper />
-            <DesktopFileGrid>
+            {loggedIn && <DesktopFileGrid>
                 {files.filter(file => file.directory === 'Desktop').map(rootDirectory => {
                     const addNewWindow = (directory: Directory) => {
                         const windowAlreadyExists = windows.find(window => window.currentDirectory === directory);
@@ -76,8 +79,8 @@ const DesktopBody: React.FC = () => {
                     });
                     return [...folders, ...files];
                 })}
-            </DesktopFileGrid>
-            <AnimatePresence>
+            </DesktopFileGrid>}
+            {loggedIn && <AnimatePresence>
                 {windows.map(window => {
                     return (
                         <Window
@@ -88,8 +91,7 @@ const DesktopBody: React.FC = () => {
                         />
                     );
                 })}
-            </AnimatePresence>
-            {process.env.NODE_ENV === 'development' && <Dock />}
+            </AnimatePresence>}
         </DesktopBodyWrapper>
     );
 };

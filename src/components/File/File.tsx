@@ -3,11 +3,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { theme } from '../../styles/theme';
+import { motion } from 'framer-motion';
+import { animations } from '../../styles/animations';
 interface FileWrapperProps {
     $selected?: boolean;
 };
 
-export const FileWrapper = styled.div<FileWrapperProps>`
+export const FileWrapper = styled(motion.div)<FileWrapperProps>`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,6 +80,7 @@ const File: React.FC<FileProps> = ({ icon, filename, color, onSelect, onDoubleCl
             ref={fileRef}
             onDoubleClick={onDoubleClick}
             $selected={selected}
+            variants={animations}
         >
             <FileIcon icon={icon} color={color} />
             <FileName>{filename}</FileName>

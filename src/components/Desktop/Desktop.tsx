@@ -21,7 +21,7 @@ const Desktop: React.FC = () => {
                 {!loggedIn && <Login handleClick={() => setLoggedIn(() => true)} />}
             </AnimatePresence>
             <MenuBar />
-            <DesktopBody />
+            <DesktopBody loggedIn={loggedIn} />
         </DesktopWrapper>
     );
 };
