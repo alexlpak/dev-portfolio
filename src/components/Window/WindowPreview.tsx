@@ -30,12 +30,22 @@ interface WindowThumbnailProps {
 };
 
 const WindowThumbnail = styled.div<WindowThumbnailProps>`
-    background-image: url(${({ $thumbnailSrc }) => $thumbnailSrc || 'white'});
+    @keyframes loading {
+        from {
+            background-color: rgba(255 255 255 / 5%);
+        };
+        to {
+            background-color: rgba(255 255 255 / 25%);
+        };
+    };
+    animation: 1s infinite alternate loading;
+    background: url(${({ $thumbnailSrc }) => $thumbnailSrc});
     background-size: contain;
     width: 16rem;
     height: 9rem;
     border-radius: .5rem;
     flex-shrink: 0;
+    transition: all 100ms ease;
 `;
 
 const WindowPreview: React.FC<Preview> = ({ title, thumbnailSrc, description, tags, href, repo, download, filesize }) => {
@@ -46,7 +56,7 @@ const WindowPreview: React.FC<Preview> = ({ title, thumbnailSrc, description, ta
             ref={windowPreviewRef}
         >
             {title && <Typography textAlign='center' size='1.25rem'>{title}</Typography>}
-            <WindowThumbnail $thumbnailSrc={thumbnailSrc} />
+            <WindowThumbnail onLoad={() => console.log('hello')} $thumbnailSrc={thumbnailSrc} />
             {description && <Typography>{description}</Typography>}
             {tags && <FlexGroup centered>                
                 {tags && tags.map(tag => {
