@@ -87,25 +87,30 @@ const Window: React.FC<WindowProps> = ({ initDirectory, id, dragConstraints }) =
     }, [currentDirectory, setSelectedFile]);
 
     return (
-        <WindowContext.Provider value={value}>
-            <WindowWrapper
-                drag
-                dragConstraints={dragConstraints}
-                dragMomentum={false}
-                dragControls={controls}
-                dragListener={false}
-                style={{
-                    zIndex: localZIndex
-                }}
-                ref={windowRef}
-                onClick={setWindowTop}
-                id={windowId}
-            >
+        <WindowWrapper
+            drag
+            dragConstraints={dragConstraints}
+            dragMomentum={false}
+            dragControls={controls}
+            dragListener={false}
+            style={{
+                zIndex: localZIndex
+            }}
+            ref={windowRef}
+            onClick={setWindowTop}
+            id={windowId}
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0, backdropFilter: 'blur(8px)' }}
+            exit={{ opacity: 0, x: 100 }}
+            transition={{ type: 'spring', duration: 0.25 }}
+            key={windowId}
+        >
+            <WindowContext.Provider value={value}>
                 <WindowMenuBar onPointerDown={startDrag} />
                 <WindowLocation />
                 <WindowContents />
-            </WindowWrapper>
-        </WindowContext.Provider>
+            </WindowContext.Provider>
+        </WindowWrapper>
     );
 };
 

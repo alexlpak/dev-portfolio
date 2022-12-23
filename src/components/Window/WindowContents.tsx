@@ -7,11 +7,11 @@ import WindowBody from './WindowBody';
 import { useWindowContext } from './Window';
 import WindowPreview from './WindowPreview';
 import { theme } from '../../styles/theme';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const WindowContentsWrapper = styled.div`
     display: flex;
     background-color: ${theme.colors.darkTransparent};
-    backdrop-filter: blur(${theme.blur});
     color: white;
     flex-grow: 1;
 `;
@@ -48,16 +48,22 @@ const WindowContents: React.FC = () => {
                     )
                 })}
             </WindowBody>
-            {selectedFile.filename && selectedFile.preview && <WindowPreview
-                title={selectedFile?.preview?.title}
-                thumbnailSrc={selectedFile?.preview?.thumbnailSrc || 'white'}
-                description={selectedFile?.preview?.description || ''}
-                tags={selectedFile?.preview?.tags || []}
-                repo={selectedFile?.preview?.repo || ''}
-                href={selectedFile?.preview?.href || ''}
-                download={selectedFile?.preview?.download}
-                filesize={selectedFile?.preview?.filesize}
-            />}
+            <AnimatePresence mode='wait'>
+                {selectedFile.filename && selectedFile.preview &&
+                    <motion.div
+                        transition={{ duration: .25, type: 'spring' }}
+                        initial={{ x: '18rem' }}
+                        animate={{ x: '0rem' }}
+                        exit={{ x: '18rem' }}
+                        key={selectedFile?.preview?.title}
+                        style={{ height: '100%' }}
+                    >
+                        <WindowPreview
+                            {...selectedFile?.preview}
+                        />
+                    </motion.div>
+                }
+            </AnimatePresence>
         </WindowContentsWrapper>
     );
 };

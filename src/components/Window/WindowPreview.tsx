@@ -5,8 +5,10 @@ import ButtonLink from '../ButtonLink';
 import Chip from '../Chip';
 import FlexGroup from '../FlexGroup';
 import Typography from '../Typography';
+import { motion } from 'framer-motion';
+import { useRef } from 'react';
 
-const WindowPreviewWrapper = styled.div`
+const WindowPreviewWrapper = styled(motion.div)`
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -17,6 +19,7 @@ const WindowPreviewWrapper = styled.div`
     width: 18rem;
     font-family: 'Open Sans', sans-serif;
     line-height: normal;
+    height: 100%;
     & a {
         color: white;
     };
@@ -36,8 +39,12 @@ const WindowThumbnail = styled.div<WindowThumbnailProps>`
 `;
 
 const WindowPreview: React.FC<Preview> = ({ title, thumbnailSrc, description, tags, href, repo, download, filesize }) => {
+    const windowPreviewRef = useRef(null);
+
     return (
-        <WindowPreviewWrapper>
+        <WindowPreviewWrapper
+            ref={windowPreviewRef}
+        >
             {title && <Typography textAlign='center' size='1.25rem'>{title}</Typography>}
             <WindowThumbnail $thumbnailSrc={thumbnailSrc} />
             {description && <Typography>{description}</Typography>}

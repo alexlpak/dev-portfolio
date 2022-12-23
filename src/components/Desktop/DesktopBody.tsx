@@ -9,6 +9,7 @@ import Window from '../Window/Window';
 import uniqid from 'uniqid';
 import Wallpaper from './Wallpaper';
 import Dock from '../Dock/Dock';
+import { AnimatePresence } from 'framer-motion';
 
 const DesktopBodyWrapper = styled.div`
     display: flex;
@@ -76,11 +77,18 @@ const DesktopBody: React.FC = () => {
                     return [...folders, ...files];
                 })}
             </DesktopFileGrid>
-            {windows.map(window => {
-                return (
-                    <Window dragConstraints={constraintsRef} key={window.id} initDirectory={window.initDirectory} id={window.id} />
-                );
-            })}
+            <AnimatePresence>
+                {windows.map(window => {
+                    return (
+                        <Window
+                            dragConstraints={constraintsRef}
+                            key={window.id}
+                            initDirectory={window.initDirectory}
+                            id={window.id}
+                        />
+                    );
+                })}
+            </AnimatePresence>
             {process.env.NODE_ENV === 'development' && <Dock />}
         </DesktopBodyWrapper>
     );
