@@ -15,7 +15,7 @@ const WindowMenuBarWrapper = styled.div`
 `;
 
 interface WindowMenuBarProps {
-    className?: string;
+    onPointerDown?: (e: PointerEvent | React.PointerEvent<Element>) => void;
 };
 
 interface MenuBarButtonProps {
@@ -45,7 +45,7 @@ const WindowLabel = styled.span`
     pointer-events: none;
 `;
 
-const WindowMenuBar: React.FC<WindowMenuBarProps> = ({ className }) => {
+const WindowMenuBar: React.FC<WindowMenuBarProps> = ({ onPointerDown }) => {
     const { currentDirectory, windowRef } = useWindowContext();
     const { setWindows } = useWindowGlobalContext();
 
@@ -59,7 +59,7 @@ const WindowMenuBar: React.FC<WindowMenuBarProps> = ({ className }) => {
     };
 
     return (
-        <WindowMenuBarWrapper className={className}>
+        <WindowMenuBarWrapper onPointerDown={onPointerDown}>
             <MenuBarButtonsWrapper>
                 <MenuBarButton $color='red' onClick={() => closeWindow()} />
                 {/* <MenuBarButton $color='orange' />

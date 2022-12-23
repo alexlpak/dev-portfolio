@@ -19,7 +19,7 @@ const WindowPreviewWrapper = styled.div`
     line-height: normal;
     & a {
         color: white;
-    }
+    };
 `;
 
 interface WindowThumbnailProps {
@@ -32,6 +32,7 @@ const WindowThumbnail = styled.div<WindowThumbnailProps>`
     width: 16rem;
     height: 9rem;
     border-radius: .5rem;
+    flex-shrink: 0;
 `;
 
 const WindowPreview: React.FC<Preview> = ({ title, thumbnailSrc, description, tags, href, repo, download, filesize }) => {

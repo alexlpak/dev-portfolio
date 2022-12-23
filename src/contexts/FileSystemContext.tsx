@@ -108,7 +108,7 @@ const data: Directories = [
                         preview: {
                             title: `Pak Wedding`,
                             thumbnailSrc: PakWeddingThumbnail,
-                            description: 'This site was created for my own wedding on November 6th, 2022. The goal for this site was to create something incredibly easy to use for our guests. The database used is AirTable and the backend is a Heroku-deployed Express application.',
+                            description: 'This site was created for my own wedding on November 6th, 2022. The goal for this site was to create something incredibly easy to use for our guests.',
                             tags: ['React JS', 'TypeScript', 'Styled Components', 'Express', 'AirTable'],
                             repo: 'https://github.com/alexlpak/joining-the-pak',
                             href: 'https://www.joiningthepak.com/',

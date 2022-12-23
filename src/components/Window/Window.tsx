@@ -2,21 +2,21 @@ import React, { useRef, useState, createContext, useContext, useEffect } from 'r
 import WindowMenuBar from './WindowMenuBar';
 import WindowContents from './WindowContents';
 import styled from 'styled-components';
-import Draggable from 'react-draggable';
 import WindowLocation from './WindowLocation';
 import { Directory, EmptyFile } from '../../contexts/FileSystemContext';
 import { useWindowGlobalContext } from '../../contexts/WindowGlobalContext';
 import { FileType } from '../../contexts/FileSystemContext';
+import { motion, useDragControls } from 'framer-motion';
 
-const WindowWrapper = styled.div`
+const WindowWrapper = styled(motion.div)`
     display: flex;
     flex-direction: column;
     position: absolute;
     border-radius: .5rem;
     overflow: hidden;
     resize: both;
-    min-width: 40rem;
-    min-height: 20rem;
+    width: 40rem;
+    height: 40rem;
 `;
 
 interface WindowContextType {
@@ -39,9 +39,10 @@ export const useWindowContext = () => {
 interface WindowProps {
     initDirectory: Directory;
     id: string;
+    dragConstraints?: React.RefObject<Element>;
 };
 
-const Window: React.FC<WindowProps> = ({ initDirectory, id }) => {
+const Window: React.FC<WindowProps> = ({ initDirectory, id, dragConstraints }) => {
     const windowRef = useRef(null);
     const windowId = id;
 
@@ -51,6 +52,8 @@ const Window: React.FC<WindowProps> = ({ initDirectory, id }) => {
     const [rootDirectory, setRootDirectory] = useState({} as Directory);
     const [localZIndex, setLocalZIndex] = useState(windowZIndex.current);
     const [selectedFile, setSelectedFile] = useState({} as FileType);
+
+    const controls = useDragControls();
 
     const value = {
         currentDirectory, setCurrentDirectory,
@@ -69,6 +72,10 @@ const Window: React.FC<WindowProps> = ({ initDirectory, id }) => {
             else return localZIndex;
         });
     };
+
+    const startDrag = (event: PointerEvent | React.PointerEvent<Element>) => {
+        controls.start(event);
+    };
     
     useEffect(() => {
         setWindowTop();
@@ -81,25 +88,23 @@ const Window: React.FC<WindowProps> = ({ initDirectory, id }) => {
 
     return (
         <WindowContext.Provider value={value}>
-            <Draggable
-                handle='.handle'
-                nodeRef={windowRef}
-                bounds='body'
-                onStart={setWindowTop}
+            <WindowWrapper
+                drag
+                dragConstraints={dragConstraints}
+                dragMomentum={false}
+                dragControls={controls}
+                dragListener={false}
+                style={{
+                    zIndex: localZIndex
+                }}
+                ref={windowRef}
+                onClick={setWindowTop}
+                id={windowId}
             >
-                <WindowWrapper
-                    style={{
-                        zIndex: localZIndex
-                    }}
-                    ref={windowRef}
-                    onClick={setWindowTop}
-                    id={windowId}
-                >
-                    <WindowMenuBar className='handle' />
-                    <WindowLocation />
-                    <WindowContents />
-                </WindowWrapper>
-            </Draggable>
+                <WindowMenuBar onPointerDown={startDrag} />
+                <WindowLocation />
+                <WindowContents />
+            </WindowWrapper>
         </WindowContext.Provider>
     );
 };

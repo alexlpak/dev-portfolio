@@ -8,8 +8,9 @@ const Button = styled.button`
     border: none;
     border-radius: .5rem;
     &:hover {
+        scale: 1.05;
         cursor: pointer;
-    }
+    };
 `;
 
 export default Button;

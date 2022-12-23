@@ -17,7 +17,7 @@ interface WindowBodyProps {
 
 const WindowBody: React.FC<WindowBodyProps> = ({ children }) => {
     return (
-        <WindowBodyStyled className='window-body'>{children}</WindowBodyStyled>
+        <WindowBodyStyled>{children}</WindowBodyStyled>
     );
 };
 

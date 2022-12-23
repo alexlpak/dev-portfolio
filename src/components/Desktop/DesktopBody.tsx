@@ -1,5 +1,5 @@
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import File from '../File/File';
 import DesktopFileGrid from './DesktopFileGrid';
@@ -39,8 +39,10 @@ const DesktopBody: React.FC = () => {
     const { files } = useFileSystemContext();
     const { windows, setWindows } = useWindowGlobalContext();
 
+    const constraintsRef = useRef(null);
+
     return (
-        <DesktopBodyWrapper className='desktop'>
+        <DesktopBodyWrapper ref={constraintsRef}>
             <Wallpaper />
             <DesktopFileGrid>
                 {files.filter(file => file.directory === 'Desktop').map(rootDirectory => {
@@ -76,7 +78,7 @@ const DesktopBody: React.FC = () => {
             </DesktopFileGrid>
             {windows.map(window => {
                 return (
-                    <Window key={window.id} initDirectory={window.initDirectory} id={window.id} />
+                    <Window dragConstraints={constraintsRef} key={window.id} initDirectory={window.initDirectory} id={window.id} />
                 );
             })}
             {process.env.NODE_ENV === 'development' && <Dock />}

@@ -12,9 +12,16 @@ const ButtonLinkStyled = styled.a`
     border-radius: .5rem;
     text-decoration: none;
     text-align: center;
+    transition: all 100ms ease;
     &:visited {
         color: inherit;
-    }
+    };
+    &:hover {
+        scale: 1.05;
+    };
+    &:active {
+        scale: 0.95;
+    };
 `;
 
 const ButtonLinkLabel = styled.div`

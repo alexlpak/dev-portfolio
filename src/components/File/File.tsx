@@ -2,13 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import Draggable from 'react-draggable';
 import { theme } from '../../styles/theme';
 interface FileWrapperProps {
     $selected?: boolean;
 };
 
-const FileWrapper = styled.div<FileWrapperProps>`
+export const FileWrapper = styled.div<FileWrapperProps>`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,7 +20,9 @@ const FileWrapper = styled.div<FileWrapperProps>`
     justify-self: flex-start;
     width: 6.5rem;
     height: 6.5rem;
+    transition: all 100ms ease;
     &:hover {
+        background-color: ${theme.colors.darkTransparentLite};
         cursor: pointer;
     };
 `;
@@ -73,22 +74,14 @@ const File: React.FC<FileProps> = ({ icon, filename, color, onSelect, onDoubleCl
     }, [selected]);
 
     return (
-        <Draggable
-            handle='.file'
-            nodeRef={fileRef}
-            bounds='parent'
-            disabled={noDrag}
+        <FileWrapper
+            ref={fileRef}
+            onDoubleClick={onDoubleClick}
+            $selected={selected}
         >
-            <FileWrapper
-                ref={fileRef}
-                onDoubleClick={onDoubleClick}
-                $selected={selected}
-                className='file'
-            >
-                <FileIcon icon={icon} color={color} />
-                <FileName>{filename}</FileName>
-            </FileWrapper>
-        </Draggable>
+            <FileIcon icon={icon} color={color} />
+            <FileName>{filename}</FileName>
+        </FileWrapper>
     );
 };
 
