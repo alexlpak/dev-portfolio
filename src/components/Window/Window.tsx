@@ -99,10 +99,10 @@ const Window: React.FC<WindowProps> = ({ initDirectory, id, dragConstraints }) =
             ref={windowRef}
             onClick={setWindowTop}
             id={windowId}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0, backdropFilter: 'blur(8px)' }}
-            exit={{ opacity: 0, x: 100 }}
-            transition={{ type: 'spring', duration: 0.25 }}
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0, backdropFilter: 'blur(8px)' }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ type: 'spring', duration: 0.5 }}
             key={windowId}
         >
             <WindowContext.Provider value={value}>

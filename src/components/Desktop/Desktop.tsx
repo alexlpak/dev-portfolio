@@ -1,4 +1,5 @@
-import React from 'react';
+import { AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import useSessionStorage from '../../hooks/useSessionStorage';
 import Login from '../Login';
@@ -13,11 +14,13 @@ const DesktopWrapper = styled.div`
 `;
 
 const Desktop: React.FC = () => {
-    const [loggedIn, setLoggedIn] = useSessionStorage('ap-portfolio-login', false);
+    const [loggedIn, setLoggedIn] = useState(false);
 
     return (
         <DesktopWrapper>
-            {!loggedIn && <Login handleClick={() => setLoggedIn(() => true)} />}
+            <AnimatePresence>
+                {!loggedIn && <Login handleClick={() => setLoggedIn(() => true)} />}
+            </AnimatePresence>
             <MenuBar />
             <DesktopBody />
         </DesktopWrapper>

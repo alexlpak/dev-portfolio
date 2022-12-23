@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import { theme } from '../styles/theme';
 import Typography from './Typography';
 import Button from './Button';
+import { motion } from 'framer-motion';
 
-const LoginWrapper = styled.div`
+const LoginWrapper = styled(motion.div)`
     display: flex;
     gap: 1rem;
     flex-direction: column;
@@ -22,7 +23,7 @@ const LoginWrapper = styled.div`
     color: white;
 `;
 
-const ProfileImageStyled = styled.div`
+const ProfileImageStyled = styled(motion.div)`
     background-image: url(${ProfileImage});
     background-size: contain;
     border-radius: 50%;
@@ -46,8 +47,17 @@ const TextWrapper = styled.div`
 
 const Login: React.FC<LoginProps> = ({ handleClick }) => {
     return (
-        <LoginWrapper>
-            <ProfileImageStyled />
+        <LoginWrapper
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, type: 'spring' }}>
+            <ProfileImageStyled
+                initial={{ opacity: 0, y: -100 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -100 }}
+                transition={{ duration: 1, type: 'spring' }}
+            />
             <TextWrapper>
                 <Typography>Alex Pak</Typography>
                 <Typography>Web Development Portfolio</Typography>
