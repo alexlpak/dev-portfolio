@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { Directory, useFileSystemContext } from '../../contexts/FileSystemContext';
 import { theme } from '../../styles/theme';
 import { useWindowContext } from './Window';
+import { motion } from 'framer-motion';
 
-const WindowNavigationWrapper = styled.div`
+const WindowNavigationWrapper = styled(motion.div)`
     display: flex;
     flex-direction: column;
     background-color: ${theme.colors.darkSolid};
@@ -26,7 +27,7 @@ const NavItem = styled.div<NavItemProps>`
 
 const WindowNavigation: React.FC = () => {
     const { files } = useFileSystemContext();
-    const { rootDirectory, setRootDirectory, setCurrentDirectory } = useWindowContext();
+    const { rootDirectory, currentDirectory, setRootDirectory, setCurrentDirectory } = useWindowContext();
 
     const handleNavItemClick = (folder: Directory) => {
         setCurrentDirectory(() => folder);
@@ -34,7 +35,13 @@ const WindowNavigation: React.FC = () => {
     };
 
     return (
-        <WindowNavigationWrapper>
+        <WindowNavigationWrapper
+            key={`navigation-${currentDirectory}`}
+            initial={{ x: -100 }}
+            animate={{ x: 0 }}
+            exit={{ x: -100 }}
+            transition={{ duration: 0.5, type: 'spring' }}
+        >
             {files.map(folder => {
                 return (
                     <NavItem

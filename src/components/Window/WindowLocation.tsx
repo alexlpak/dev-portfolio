@@ -1,4 +1,4 @@
-import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -29,7 +29,7 @@ const WindowPath = styled.input.attrs({
     }
 `;
 
-const BackButton = styled.button.attrs({
+const NavButton = styled.button.attrs({
     type: 'button'
 })`
     display: flex;
@@ -43,7 +43,11 @@ const BackButton = styled.button.attrs({
     };
 `;
 
-const WindowLocation: React.FC = () => {
+interface WindowLocationProps {
+    handleToggleNavigation?: () => void;
+};
+
+const WindowLocation: React.FC<WindowLocationProps> = ({ handleToggleNavigation }) => {
     const { currentDirectory, rootDirectory, setCurrentDirectory, setRootDirectory, windowId } = useWindowContext();
     const { windows } = useWindowGlobalContext();
 
@@ -72,12 +76,15 @@ const WindowLocation: React.FC = () => {
 
     return (
         <WindowLocationWrapper>
-            <BackButton
+            <NavButton onClick={handleToggleNavigation}>
+                <FontAwesomeIcon icon={faBars} />
+            </NavButton>
+            <NavButton
                 onClick={() => navigateToParent(currentDirectory)}
                 disabled={!currentDirectory.parent}
             >
                 <FontAwesomeIcon icon={faCaretLeft} />
-            </BackButton>
+            </NavButton>
             <WindowPath value={path[0] === rootDirectory.directory ? path.join('/') : path.reverse().join('/')} />
         </WindowLocationWrapper>
     );

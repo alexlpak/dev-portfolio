@@ -56,7 +56,7 @@ const WindowPreview: React.FC<Preview> = ({ title, thumbnailSrc, description, ta
             ref={windowPreviewRef}
         >
             {title && <Typography textAlign='center' size='1.25rem'>{title}</Typography>}
-            <WindowThumbnail onLoad={() => console.log('hello')} $thumbnailSrc={thumbnailSrc} />
+            <WindowThumbnail $thumbnailSrc={thumbnailSrc} />
             {description && <Typography>{description}</Typography>}
             {tags && <FlexGroup centered>                
                 {tags && tags.map(tag => {

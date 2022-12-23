@@ -13,6 +13,8 @@ const DockBase = styled.div`
     background-color: ${theme.colors.darkTransparent};
     border-radius: .25rem;
     backdrop-filter: blur(${theme.blur});
+    position: absolute;
+    bottom: 1rem;
 `;
 
 const Dock: React.FC = () => {

@@ -9,6 +9,7 @@ import Window from '../Window/Window';
 import uniqid from 'uniqid';
 import Wallpaper from './Wallpaper';
 import { AnimatePresence } from 'framer-motion';
+import Dock from '../Dock/Dock';
 
 const DesktopBodyWrapper = styled.div`
     display: flex;
@@ -92,6 +93,7 @@ const DesktopBody: React.FC<DesktopBodyProps> = ({ loggedIn }) => {
                     );
                 })}
             </AnimatePresence>}
+            {process.env.NODE_ENV === 'development' && loggedIn && <Dock />}
         </DesktopBodyWrapper>
     );
 };

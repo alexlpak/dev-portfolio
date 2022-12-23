@@ -50,6 +50,7 @@ const Window: React.FC<WindowProps> = ({ initDirectory, id, dragConstraints }) =
     const [rootDirectory, setRootDirectory] = useState({} as Directory);
     const [localZIndex, setLocalZIndex] = useState(windowZIndex.current);
     const [selectedFile, setSelectedFile] = useState({} as FileType);
+    const [showNavigation, setShowNavigation] = useState(true);
 
     const controls = useDragControls();
 
@@ -111,8 +112,8 @@ const Window: React.FC<WindowProps> = ({ initDirectory, id, dragConstraints }) =
         >
             <WindowContext.Provider value={value}>
                 <WindowMenuBar onPointerDown={startDrag} />
-                <WindowLocation />
-                <WindowContents />
+                <WindowLocation handleToggleNavigation={() => setShowNavigation(current => !current)} />
+                <WindowContents showNavigation={showNavigation} />
             </WindowContext.Provider>
         </WindowWrapper>
     );

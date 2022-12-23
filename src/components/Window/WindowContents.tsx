@@ -16,11 +16,18 @@ const WindowContentsWrapper = styled.div`
     flex-grow: 1;
 `;
 
-const WindowContents: React.FC = () => {
+interface WindowContentsProps {
+    showNavigation?: boolean;
+};
+
+const WindowContents: React.FC<WindowContentsProps> = ({ showNavigation }) => {
     const { currentDirectory, setCurrentDirectory, selectedFile, setSelectedFile } = useWindowContext();
+
     return (
         <WindowContentsWrapper>
-            <WindowNavigation />
+            <AnimatePresence>
+                {showNavigation && <WindowNavigation />}
+            </AnimatePresence>
             <WindowBody>
                 {currentDirectory?.folders?.map(folder => {
                     return (
