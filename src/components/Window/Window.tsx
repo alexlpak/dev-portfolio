@@ -95,7 +95,7 @@ const Window: React.FC<WindowProps> = ({ initDirectory, id, dragConstraints }) =
                 zIndex: localZIndex
             }}
             ref={windowRef}
-            onClick={setWindowTop}
+            onMouseDown={setWindowTop}
             id={windowId}
             initial={{ opacity: 0, y: -50, width: '0rem', height: '0rem' }}
             animate={{
