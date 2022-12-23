@@ -1,7 +1,6 @@
 import { AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import useSessionStorage from '../../hooks/useSessionStorage';
 import Login from '../Login';
 import MenuBar from '../MenuBar/MenuBar';
 import DesktopBody from './DesktopBody';
