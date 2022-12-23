@@ -9,7 +9,6 @@ import Window from '../Window/Window';
 import uniqid from 'uniqid';
 import Wallpaper from './Wallpaper';
 import { AnimatePresence } from 'framer-motion';
-import Dock from '../Dock/Dock';
 
 const DesktopBodyWrapper = styled.div`
     display: flex;
