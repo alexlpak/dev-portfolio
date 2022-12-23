@@ -1,15 +1,11 @@
 import React, { useContext, useState, createContext, useEffect } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faCode, faFilePdf, faFileZipper, faGamepad, faHeart, faMobile, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faGamepad, faHeart, faMobile, faStar } from '@fortawesome/free-solid-svg-icons';
 import ShatterdCellThumbnail from '../assets/images/shatterd-cell-thumbnail.jpg';
 import TerryWeddingThumbnail from '../assets/images/terry-wedding-thumbnail.jpg';
 import PakWeddingThumbnail from '../assets/images/pak-wedding-thumbnail.jpg';
 import FlappyThumbnail from '../assets/images/ap-flappy-thumbnail.jpg';
 import PortfolioThumbnail from '../assets/images/portfolio-thumbnail.jpg';
-import OceanSprayZIP from '../assets/downloads/alex_pak_aaf_2018_ocean_spray_campaign_creative.zip';
-import OceanSprayThumbnail from '../assets/images/ocean-spray-thumbnail.jpg';
-import BordenRedesignThumbnail from '../assets/images/borden-thumbnail.jpg';
-import BordenRedesignPDF from '../assets/pdf/alex_pak_borden_redesign_presentation.pdf';
 export interface FileType {
     filename: string;
     icon: IconProp;
