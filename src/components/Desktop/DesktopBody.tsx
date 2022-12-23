@@ -93,7 +93,6 @@ const DesktopBody: React.FC<DesktopBodyProps> = ({ loggedIn }) => {
                     );
                 })}
             </AnimatePresence>}
-            {process.env.NODE_ENV === 'development' && loggedIn && <Dock />}
         </DesktopBodyWrapper>
     );
 };
